@@ -1,0 +1,16 @@
+{% extends 'nechuadmin/base.html' %}
+{% load static %}
+
+{% block content %}
+
+{% if request.user.is_authenticated %}
+
+    <h1 class="card-title fw-semibold mb-4" style="font-size:25px;">Welcome to dashboard, <span style="color:green;">{{request.user}}</span></h1>
+
+{% else %}
+
+    <h1>Unauthorized user</h1>
+
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" type="image/png" href="{% static 'assets/images/logos/favicon3.png' %}">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/vertical-carousel.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/index.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="icon" href="{% static 'images/logo cropped.png' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'slick/slick.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'slick/slick-theme.css' %}">
+  <title>Nechupadam Dental Clinic</title>
+</head>
+<body>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="transparent-header">
+                    <div class="logo">
+                        <a href="{% url 'index' %}"><img src="{% static 'images/nechu.png' %}" alt="Logo" height="90px"></a>
+                    </div>
+                    <div class="right-images">
+                        <a href="tel:+919946602221"><img src="{% static 'images/Capture2.png' %}" alt="Image 1" height="60px" style="margin-right: 10px;"></a>
+                        <img src="{% static 'images/Capture.png' %}" alt="Image 2" height="60px">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <hr>
+
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false" style="color: black; text-decoration: none; border-bottom: 2px solid transparent; transition: background-color 0.3s, box-shadow 0.3s;"
+                        onmouseover="this.style.backgroundColor = 'white'; this.style.boxShadow = '2px 4px 8px rgba(0, 0, 0, 0.2)'; this.style.borderBottomColor = 'purple';"
+                        onmouseout="this.style.backgroundColor = 'transparent'; this.style.boxShadow = 'none'; this.style.borderBottomColor = 'transparent';">
+                        ABOUT
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="servicesDropdown">
+                        <a class="dropdown-item" href="{% url 'general_info' %}">General Info</a>
+                        <a class="dropdown-item" href="{% url 'team' %}">Team</a>
+                        <a class="dropdown-item" href="{% url 'doctor_profile' %}">Doctor's Profile</a>
+                        <a class="dropdown-item" href="{% url 'testimonials' %}">Testimonials</a>
+                        <a class="dropdown-item" href="{% url 'nechupadam_contact' %}">Contact</a>
+                        <a class="dropdown-item" href="{% url 'nechupadam_location' %}">Loaction</a>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'nechupadam_treatments' %}" 
+                    style="color: black; text-decoration: none; border-bottom: 2px solid transparent; transition: background-color 0.3s, box-shadow 0.3s;"
+                    onmouseover="this.style.backgroundColor = 'white'; this.style.boxShadow = '2px 4px 8px rgba(0, 0, 0, 0.2)'; this.style.borderBottomColor = 'purple';"
+                    onmouseout="this.style.backgroundColor = 'transparent'; this.style.boxShadow = 'none'; this.style.borderBottomColor = 'transparent';">
+                    TREATMENTS
+                 </a>
+                 
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'nechupadam_history' %}" 
+                    style="color: black; text-decoration: none; border-bottom: 2px solid transparent; transition: background-color 0.3s, box-shadow 0.3s;"
+                    onmouseover="this.style.backgroundColor = 'white'; this.style.boxShadow = '2px 4px 8px rgba(0, 0, 0, 0.2)'; this.style.borderBottomColor = 'purple';"
+                    onmouseout="this.style.backgroundColor = 'transparent'; this.style.boxShadow = 'none'; this.style.borderBottomColor = 'transparent';">
+                    HISTORY
+                 </a>
+                 
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'nechupadam_process' %}" 
+                    style="color: black; text-decoration: none; border-bottom: 2px solid transparent; transition: background-color 0.3s, box-shadow 0.3s;"
+                    onmouseover="this.style.backgroundColor = 'white'; this.style.boxShadow = '2px 4px 8px rgba(0, 0, 0, 0.2)'; this.style.borderBottomColor = 'purple';"
+                    onmouseout="this.style.backgroundColor = 'transparent'; this.style.boxShadow = 'none'; this.style.borderBottomColor = 'transparent';">
+                    PROCESS
+                 </a>
+                 
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'nechupadam_youtube' %}" 
+                    style="color: black; text-decoration: none; border-bottom: 2px solid transparent; transition: background-color 0.3s, box-shadow 0.3s;"
+                    onmouseover="this.style.backgroundColor = 'white'; this.style.boxShadow = '2px 4px 8px rgba(0, 0, 0, 0.2)'; this.style.borderBottomColor = 'purple';"
+                    onmouseout="this.style.backgroundColor = 'transparent'; this.style.boxShadow = 'none'; this.style.borderBottomColor = 'transparent';">
+                    YOUTUBE
+                 </a>
+                 
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'nechupadam_articles' %}" 
+                    style="color: black; text-decoration: none; border-bottom: 2px solid transparent; transition: background-color 0.3s, box-shadow 0.3s;"
+                    onmouseover="this.style.backgroundColor = 'white'; this.style.boxShadow = '2px 4px 8px rgba(0, 0, 0, 0.2)'; this.style.borderBottomColor = 'purple';"
+                    onmouseout="this.style.backgroundColor = 'transparent'; this.style.boxShadow = 'none'; this.style.borderBottomColor = 'transparent';">
+                    ARTICLES
+                 </a>
+                 
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'nechupadam_images' %}" 
+                  style="color: black; text-decoration: none; border-bottom: 2px solid transparent; transition: background-color 0.3s, box-shadow 0.3s;"
+                  onmouseover="this.style.backgroundColor = 'white'; this.style.boxShadow = '2px 4px 8px rgba(0, 0, 0, 0.2)'; this.style.borderBottomColor = 'purple';"
+                  onmouseout="this.style.backgroundColor = 'transparent'; this.style.boxShadow = 'none'; this.style.borderBottomColor = 'transparent';">
+                  IMAGES
+               </a>
+               
+              </li>
+
+
+            </ul>
+        </div>
+        <a class="navbar-brand" href="https://www.facebook.com/NechupadamDentalClinic/" target="_blank"><i class="fab fa-facebook-square" style="color:rgb(24, 83, 161); margin-left:25px;"></i></a>
+        <a class="navbar-brand" href="https://www.youtube.com/@PalluDoctor" target="_blank"><i class="fab fa-youtube-square" style="color:rgb(24, 83, 161); margin-left:25px;"></i></a>
+        <a class="navbar-brand" href="https://twitter.com/nechupadam?lang=en" target="_blank"><i class="fab fa-twitter-square" style="color:rgb(24, 83, 161); margin-left:25px;"></i></a>
+        <a class="navbar-brand" href="https://in.linkedin.com/company/nechupadam-dental" target="_blank"><i class="fab fa-linkedin" style="color:rgb(24, 83, 161); margin-left:25px;"></i></a>
+        <a class="navbar-brand" href="#"><i class="fab fa-pinterest-square" style="color:rgb(24, 83, 161); margin-left:25px;"></i></a>
+
+    </nav>
+
+
+    <br>
+    <br>
+
+    {% block content %}
+
+    {% endblock %}
+
+    <br>
+    <br>    
+
+
+
+    <!-- Footer -->
+    <footer class="container pt-4 my-md-5 pt-md-5 border-top">
+        <div class="row">
+          <div class="col-lg-4 col-md col-sm-12 nec">
+            <h4>Nechupadam <span class="tcol">Dental Clinic</span></h4>
+            <ul class="list-unstyled text-small">
+              <li>A team of dentists working to ensure <br> you
+                receive the best treatment.</li> <br>
+              <li><a href="tel:+919946602221" style="color:black; text-decoration: none;" onmouseover="this.style.color = '#1853a1';" onmouseout="this.style.color = 'black';"><span><i class="fas fa-phone" style="color:#1853a1"></i></span><span style="color:white;">...</span>+919946602221</a></li>
+              <br>
+              <li><a href="mailto:ceo@nechupadam.com" style="color:black; text-decoration: none;" onmouseover="this.style.color = '#1853a1';" onmouseout="this.style.color = 'black';"><span><i class="fas fa-envelope" style="color:#1853a1"></i></span><span style="color:white;">...</span>ceo@nechupadam.com</a></li>
+            </ul>
+          </div>
+          <div class="col-lg col-md col-sm-12 abt">
+            <h4>About</h4>
+            <ul class="list-unstyled text-small">
+              <li><a href="{% url 'team' %}" style="color:black; text-decoration: none;" onmouseover="this.style.color = '#1853a1';" onmouseout="this.style.color = 'black';">Out Dental Team</a></li>
+              <br>
+              <li><a href="{% url 'testimonials' %}" style="color:black; text-decoration: none;" onmouseover="this.style.color = '#1853a1';" onmouseout="this.style.color = 'black';">Testimonials</a></li>
+              <br>
+              <li><a href="{% url 'nechupadam_treatments' %}" style="color:black; text-decoration: none;" onmouseover="this.style.color = '#1853a1';" onmouseout="this.style.color = 'black';">Dental Services</a></li>
+              <br>
+            </ul>
+          </div>
+          <div class="col-lg-4 col-sm-12 award ">
+            <h4>Our Awards</h4>
+            <ul class="list-unstyled ">
+              <li>Dr. Thomas is a Multiple award winner</li>
+              <li>Doctor of the year 2020</li>
+              <li>Doctor of the year 2020</li>
+              <li>Doctor of the year 2020</li>
+            </ul>
+          </div>
+          <div class="col-lg col-sm-12">
+            <h4>Social Networks</h4>
+            <ul class="list-unstyled text-small">
+              <li>Visit nechupadam dental clinics on these social links and connect with us. Make sure to follow our accounts for regular updates.</li>
+              <li class="row mt-3 ft1">
+                <div class="col"><a href="https://www.youtube.com/@PalluDoctor"><img src="{% static 'images/youtube-icon2.png' %}" alt="" width="100%" ></a></div>
+                <div class="col"><a href="https://www.facebook.com/NechupadamDentalClinic/"><img src="{% static 'images/facebook-icons2.png' %}" alt="" width="100%"></a></div>
+                <div class="col"><a href="https://twitter.com/nechupadam?lang=en"><img src="{% static 'images/twitter-icon2.png' %}" alt="" width="100%"></a></div>
+                <div class="col"><a href="https://in.linkedin.com/company/nechupadam-dental"><img src="{% static 'images/linkdin-icon2.png' %}" alt="" width="100%"></a></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </footer>
+      
+      <!-- fOOTER -->
+      <div class="fluid">
+        <div class="container">
+          <footer class="py-4">
+            <div class="row">
+              <div class="col-lg-4 col-sm-12">
+                <p class="text-center copyright mb-1">Copyright 2023 by <b>Nechupadam Dental Clinics</b></p>
+                <p class="text-center copyright mb-1">“Protecting our original work with Copyright Reserved”</p>
+              </div>
+              <div class="col">
+                <ul class="nav justify-content-lg-start justify-content-center mb-3">
+                  <li class="nav-item"><a href="{% url 'general_info' %}" class="nav-link px-2" onmouseover="this.style.color = 'black';" onmouseout="this.style.color = 'white';">ABOUT US</a></li>
+                  <li class="nav-item"><a href="{% url 'nechupadam_treatments' %}" class="nav-link px-2" onmouseover="this.style.color = 'black';" onmouseout="this.style.color = 'white';">TREATMENTS</a></li>
+                  <li class="nav-item"><a href="{% url 'nechupadam_articles' %}" class="nav-link px-2" onmouseover="this.style.color = 'black';" onmouseout="this.style.color = 'white';">ARTICLES</a></li>
+                  <li class="nav-item"><a href="{% url 'nechupadam_youtube' %}" class="nav-link px-2" onmouseover="this.style.color = 'black';" onmouseout="this.style.color = 'white';">YOUTUBE</a></li>
+                  <li class="nav-item"><a href="{% url 'nechupadam_history' %}" class="nav-link px-2" onmouseover="this.style.color = 'black';" onmouseout="this.style.color = 'white';">HISTORY</a></li>
+                  <li class="nav-item"><a href="#" class="nav-link px-2" onmouseover="this.style.color = 'black';" onmouseout="this.style.color = 'white';">BACK TO TOP</a></li>
+                </ul>
+              </div>
+            </div>
+          </footer>
+        </div>
+      </div>
+
+        <div class="whatsapp-button">
+        <a href="https://api.whatsapp.com/send?phone=9946602221" target="_blank">
+            <i class="fa fa-whatsapp"></i>
+        </a>
+        </div>
+
+
+
+
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="{% static 'slick/slick.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/index.js' %}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,727 @@
+{% extends 'general/main.html' %}
+{% load static %}
+{% block content %}
+
+
+<style>
+    .card-text
+    {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 4; /* Display only 4 lines */
+        -webkit-box-orient: vertical;
+    }
+
+      /* Custom styles for the card */
+      .custom-card {
+        background-color: #b868a0;
+        color: white;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s ease-in-out;
+        width:280px;
+      }
+  
+      .custom-card:hover {
+        transform: scale(1.02); /* Make it slightly bigger on hover */
+      }
+  
+      .card-text {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 4; /* Display only 4 lines */
+        -webkit-box-orient: vertical;
+      }
+  
+      .custom-modal-lg {
+          max-width: 80%; /* Adjust the width as needed */
+      }
+
+
+
+
+
+
+
+
+
+      /* Basic card styles */
+      .container2 {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-top:-150px;
+    }
+    
+    .card2 {
+        width: 30%;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: transform 0.2s;
+    }
+    
+    .card2 img {
+        width: 100%;
+        height: auto;
+    }
+    
+    .card2-body {
+        padding: 20px;
+    }
+    
+    .name {
+        font-size: 34px;
+        color:#0e54ae;
+        position: relative; /* Add relative positioning */
+    }
+    
+    /* Add border styles for the name */
+    .name::after {
+        content: "";
+        position: absolute;
+        bottom: -15px; /* Adjust this value for desired spacing */
+        left: 0;
+        width: 30%;
+        height: 3px; /* Adjust the thickness of the border as needed */
+        background-color: rgba(188, 116, 165, 1); /* Purple color */
+    }
+    
+    .description {
+        font-size: 16px;
+    }
+    
+    /* Hover effect */
+    .card2:hover {
+        transform: scale(1.05);
+    }
+    
+    /* Media queries for responsiveness */
+    @media (max-width: 768px) {
+        .container2 {
+            flex-direction: column;
+            align-items: center;
+        }
+    
+        .card2 {
+            width: 100%;
+        }
+    }
+    
+    .more
+    {
+      background-color:white;
+      color:#b868a0; 
+      border:1px solid #b868a0;
+    }
+
+    .more:hover
+    {
+      background-color:#b868a0;
+      color:white;
+    }
+
+
+
+  
+</style>
+
+<div class="container">
+  <div id="carouselExampleFade" class="carousel slide vertical carousel-fade" data-bs-ride="carousel" data-interval="500">
+      <div class="carousel-inner">
+
+          {% for i  in bg_image %}
+
+          <div class="carousel-item active fadein">
+              <div class="carousel-container">
+                  <img src="{{i.imageURL}}" class="d-block w-100" alt="...">
+                  <div class="carousel-caption">
+                      <p class="nac-banner-subtitle">{{i.title1}}</p>
+                      <p class="nac-banner-title">{{i.title2}}</p>
+                  </div>
+              </div>
+          </div>
+
+          {% endfor %}
+
+          {% for i  in bg_image2 %}
+
+
+          <div class="carousel-item fadein">
+              <div class="carousel-container">
+                  <img src="{{i.imageURL}}" class="d-block w-100" alt="...">
+                  <div class="carousel-caption">
+                      <p class="nac-banner-subtitle">{{i.title1}}</p>
+                      <p class="nac-banner-title">{{i.title2}}</p>
+                  </div>
+              </div>
+          </div>
+
+          {% endfor %}
+
+          {% for i  in bg_image3 %}
+
+          <div class="carousel-item fadein">
+              <div class="carousel-container">
+                  <img src="{{i.imageURL}}" class="d-block w-100" alt="...">
+                  <div class="carousel-caption">
+                      <p class="nac-banner-subtitle">{{i.title1}}</p>
+                      <p class="nac-banner-title">{{i.title2}}</p>
+                  </div>
+              </div>
+          </div>  
+
+          {% endfor %}
+
+      </div>
+      <!-- Controls -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true" ></span>
+          <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+      </button>
+  </div>
+</div>
+
+
+
+
+
+
+  <!-- book your appointment  -->
+  <div class="container">
+    <div class="row background-125">
+      <div class="col-lg sub-125 fadein">
+        <hr>
+        <p>" My family trusts Dr. Thomas Nechupadam completely, he’s been with us for years and has helped us on numerous occasions"</p>
+        <hr>
+        <img class="img1" src="{% static 'images/signature.png' %}" alt="">
+      </div>
+      <div class="col-lg sub-1252 fadein">
+        <p>Book Your Appointment</p>
+        <hr>
+        <div class="row">
+            <div class="col-lg fadein">
+              <img class="img2" src="{% static 'images/img-booking.png' %}" alt="" width="100%">
+            </div>
+            <div class="col-lg">
+              <form action="{% url 'booking' %}" method="POST" class="fadein">
+                {% csrf_token %}
+                <div class="mb-4">
+                  <label for="exampleInputname" class="form-label">Your Name</label>
+                  <input type="text" class="form-control" id="exampleInputname" name="name" required>
+                </div>
+                <div class="mb-4">
+                  <label for="exampleInputPhone" class="form-label">Phone number</label>
+                  <input type="text" class="form-control" id="exampleInputphone" name="phone" pattern="[0-9]{10}" title="Please enter exactly 10 digits" required>
+                </div>
+                <select class="form-select mb-4" aria-label="Default select example" name="doctor">
+                  <option selected disabled>Select Your Dentist</option>
+                  <option value="Dr.Thomas Nechupadam">Dr.Thomas Nechupadam</option>
+                  <option value="Dr.Nithia Sara Thomas">Dr.Nithia Sara Thomas</option>
+                  <option value="Dr.Sreelakshmi Surrej">Dr.Sreelakshmi Surrej</option>
+                </select>
+                <div class="mb-4">
+                    <input type="date" placeholder="Appointment date *" class="form-control" id="exampleInputdate" min="{{ today }}" name="date" required>
+                </div>
+                <button type="submit" class="btn">Book Your Dentist</button>
+              </form>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  
+  <!-- committed to excellence -->
+    <div class="container">
+      <div class="row committed-cont-bg">
+      <div class="row committed-cont fadein">
+        <p>Committed To</p>
+      </div>
+      <div class="row committed-cont2 fadein">
+        <div class="col-lg">
+          <p>Excellence</p>
+        </div>
+        <div class="col-lg">
+          <button class="btn"><a  style="color: rgb(255, 255, 255); text-decoration: none;" href="{% url 'nechupadam_contact' %}">Book Appointment &nbsp;&#62;</a></button>
+        </div>
+        <br>
+        <br>
+      </div>
+
+          
+
+      <div class="container">
+        <div class="row" style="margin-left: 43px;">
+          <!-- Card 1 -->
+          {% for i in treatments %}
+          {% if forloop.counter <= 3 %} <!-- Display only the first 3 treatments -->
+          <div class="col-md-3 mb-4" style="margin-right: 85px;">
+            <a href="#" style="text-decoration: none; color: white;">
+              <div class="card custom-card">
+                <img src="{{ i.imageURL }}" class="card-img-top" alt="{{ i.title }}" height="280px">
+                <div class="card-body">
+                  <h5 class="card-title">{{ i.title }}</h5>
+                  <p class="card-text">{{ i.description }}</p>
+                  <br>
+      
+                  <a href="{% url 'more_about_treatment' i.pk %}" class="btn btn-primary">
+                    Read More
+                  </a>
+      
+                </div>
+              </div>
+            </a>
+          </div>
+
+          {% endif %}
+          {% endfor %}
+
+        </div>
+        <br>
+        <br>
+
+      </div>
+
+
+      <div class="container d-flex justify-content-center align-items-center">
+        <a href="{% url 'nechupadam_treatments' %}" class="btn more">Click Here To View More Treatments</a>
+        <br>
+        <br>
+        <br>
+      </div>
+
+
+          {% comment %} <div class="container">
+            <div class="row">
+              <!-- Card 1 -->
+              {% for i in treatments %}
+              <div class="col-md-3 col-6 mb-4">
+                <a href="#" style="text-decoration:none; color:white;">
+                  <div class="card custom-card">
+                    <img src="{{i.imageURL}}" class="card-img-top" alt="{{i.title}}" height="250px" >
+                    <div class="card-body">
+                      <h5 class="card-title">{{i.title}}</h5>
+                      <p class="card-text">{{i.description}}</p>
+                      <br>
+                      <a href="{% url 'more_about_treatment' i.pk %}" class="btn btn-primary">
+                        Read More
+                      </a>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              {% endfor %}
+            </div>
+          </div> {% endcomment %}
+          
+
+
+            {% comment %} <div class="card c-1">
+              {% for i in treatments %}
+                <img class="img1" src="{{i.imageURL}}" class="card-img-top" alt="{{i.title}}" height="250px">
+                <div class="card-body">
+                    <h4 class="card-title" style="color:white; margin-top:-50px; font-weight:700;">{{i.title}}</h4>
+                    <p class="card-text" style="color:white;">{{i.description}}</p>
+                    <a href="#" class="btn btn-primary read-more-button" style="margin-left:20px;">Read More</a>
+                </div>
+              {% endfor %}
+            </div> {% endcomment %}
+  
+        </div>
+      </div>
+    </div>
+
+    <div class="container d-flex justify-content-center align-items-center">
+      <a href="{% url 'testimonials' %}" class="btn more">Click Here To View Client Reviews</a>
+    </div>
+
+      {% comment %} <div id="carouselExampleCaptions" class="container profile-c-bg  carousel slide">
+
+      </div> {% endcomment %}
+    </div>
+    
+  </div>
+  
+
+  <div class="container">
+    <div class="row s1" style="background-image: url('{% static 'images/DSC04197.png' %}');">
+      <div class="col-lg-6 fadein" style="margin-top:-100px;">
+        <div class="row spec-cont fadein">
+          <p>Dr Thomas Nechupadam</p>
+        </div>
+        <div class="row spec-cont2 fadein">
+          <p>Specialized Team</p>
+        </div>
+        <div class="row spec-cont3 fadein">
+          " We are a team of dentists, hygienists and receptionists who work together to ensure that you receive the best treatment that you require at a very time that suits you. "
+        </div>
+        <div class="line"></div>
+        <img src="{% static 'images/Signature-Logo-VECTOR.png' %}" width="80%" alt="" style="margin-top:-50px;">
+      </div>
+    </div>
+  </div>
+  
+  <!-- Doctors -->
+  <div class="container2">
+    {% for i in staffs %}
+    {% if forloop.counter <= 3 %}
+    <div class="card2">
+      
+        <img src="{{i.imageURL}}" alt="Card 1">
+        <div class="card2-body">
+            <h2 class="name">{{i.name}}</h2>
+            <br>
+            <br>
+            <h6 style="color:black;">{{i.position}}</h6>
+            <p class="description">{{i.description}}</p>
+        </div>
+      
+    </div>
+    {% endif %}
+    {% endfor %}
+  </div>
+  <br>
+  <br>
+
+  <div class="container d-flex justify-content-center align-items-center">
+    <a href="{% url 'team' %}" class="btn more">View All Staffs</a>
+  </div>
+  
+  
+  
+  
+  <div class="container">
+    <div class="row n1">
+      <div class="col-lg">
+        <div class="row num-cont fadein">
+          <p>Our Dental Service</p>
+          </div>
+          <div class="row num-cont2 fadein">
+          <p>In Numbers</p>
+        </div>
+        <hr>  
+        <div class="row num-cont3">
+          <img src="{% static 'images/oooo.png' %}" width="100%" alt="">
+        </div>
+    </div>
+  </div>
+  </div>
+  
+  <div class="container">
+    <div class="row a1">
+      <div class="col-lg-6 fadein">
+          <img src="{% static 'images/02-1.png' %}" width="90%" alt="" class="doc">
+      </div>
+      <div class="col-lg-6 fadein">
+        <div class="row app-cont ">
+          <p>Book Your Visit At</p>
+          </div>
+          <div class="row app-cont2">
+          <p>Nechupadam Dental Clinic</p>
+          </div>
+          <p class="app-cont3">Need emergency dental services? You can easily book an appointment with us by filling out the form below, and we offer superior outcomes with the convenience of web-enabled applications. We consistently enhance and improve our processes by utilizing our technically proficient knowledge and expertise.</p>
+  
+            <div class="row sub-1253">
+                <div class="col-lg">
+                  <form action="{% url 'booking' %}" method="POST">
+                    {% csrf_token %}
+                    <div class="mb-4">
+                      <label for="exampleInputname" class="form-label">Your Name</label>
+                      <input type="text" class="form-control" id="exampleInputname" name="name" required>
+                    </div>
+                    <div class="mb-4">
+                      <label for="exampleInputPhone" class="form-label">Phone number</label>
+                      <input type="text" class="form-control" id="exampleInputphone" name="phone" pattern="[0-9]{10}" title="Please enter exactly 10 digits" required>
+                    </div>
+                    <select class="form-select mb-4" aria-label="Default select example" name="doctor">
+                      <option selected disabled>Select Your Dentist</option>
+                      <option value="Dr.Thomas Nechupadam">Dr.Thomas Nechupadam</option>
+                      <option value="Dr.Nithia Sara Thomas">Dr.Nithia Sara Thomas</option>
+                      <option value="Dr.Sreelakshmi Surrej">Dr.Sreelakshmi Surrej</option>
+                    </select>
+                    <div class="mb-4">
+                      <input type="date" placeholder="Appointment date *" class="form-control" id="exampleInputdate2" min="{{ today }}" name="date" required>
+                    </div>
+                    <button type="submit" class="btn">Book Your Dentist</button>
+                  </form>
+                </div>
+            </div>
+      </div>
+    </div>
+    <div class="row a2">
+      <div class="col-lg col-md col-sm fadein">
+        <div class="row">
+        <div class="col-lg-3 contact-info"><img src="{% static 'images/General Dentistry.png' %}" width="100%" alt=""></div>
+        <div class="col-lg">
+        <h5>General Dentistry</h5>
+        <p>Competently parallel task researched data process.</p></div></div>
+      </div>
+      <div class="col-lg col-md col-sm fadein">
+        <div class="row">
+          <div class="col-lg-3 contact-info"><img src="{% static 'images/implant.png' %}" width="100%" alt=""></div>
+          <div class="col-lg">
+            <h5>Implants</h5>
+            <p>Leverage other resource leveling convergence data.</p>
+          </div></div>
+      </div>
+      <div class="col-lg col-md col-sm fadein">
+        <div class="row">
+          <div class="col-lg-3 contact-info"><img src="{% static 'images/dental-surgery.png' %}" width="100%" alt=""></div>
+          <div class="col-lg">
+        <h5>Dental Surgery</h5>
+        <p>Engage fully tested process top line platform clients.</p></div></div>
+      </div>
+      <div class="col-lg col-md col-sm fadein">
+        <div class="row">
+          <div class="col-lg-3 contact-info"><img src="{% static 'images/Alignment.png' %}" width="100%" alt=""></div>
+          <div class="col-lg">
+        <h5>Alignment</h5>
+        <p>User generated content in real time offshoring.</p></div></div>
+      </div>
+    </div>
+    <div class="row a2">
+      <div class="col-lg col-md col-sm fadein">
+        <div class="row">
+          <div class="col-lg-4 contact-info"><img src="{% static 'images/Whitening.png' %}" width="100%" alt=""></div>
+          <div class="col-lg">
+        <h5>Whitening</h5>
+        <p>Incubate standards great channels scalable benefits.</p></div></div>
+      </div>
+      <div class="col-lg col-md col-sm fadein">
+        <div class="row">
+          <div class="col-lg-4 contact-info"><img src="{% static 'images/Teeth Braces.png' %}" width="100%" alt=""></div>
+          <div class="col-lg">
+        <h5>Teeth Braces</h5>
+        <p>Synthesize integrated schemas with networks.</p></div></div>
+      </div>
+      <div class="col-lg col-md col-sm fadein">
+        <div class="row">
+          <div class="col-lg-4 contact-info"><img src="{% static 'images/Prothesis.png' %}" width="100%" alt=""></div>
+          <div class="col-lg">
+        <h5>Prosthesis</h5>
+        <p>Revolutionize global sources through dental services.</p></div></div>
+      </div>
+      <div class="col-lg col-md col-sm fadein">
+        <div class="row">
+          <div class="col-lg-4 contact-info"><img src="{% static 'images/Teeth Protection.png' %}" width="100%" alt=""></div>
+          <div class="col-lg">
+        <h5>Teeth Protection</h5>
+        <p>Evisculate holistic innovation rather than centric data.</p></div></div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="container mt-5">
+    <div class="row justify-content-center pt-5">
+      <div class="col-lg-6 con-cont2"> <span class="con-cont">Contact </span>Nechupadam <br>Dental clinics</div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-6 con-cont3">All of your oral issues have a perfect remedy right here. The greatest care is offered at competitive prices at Dr. Thomas Nechupadam’s Dental Clinic.</div>
+    </div>
+  </div>
+  <!-- Working Hours -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md col-sm">
+        <img src="{% static 'images/Screenshot-2023.png' %}" alt="google map screenshot" width="100%" class="image-size">
+      </div>
+      <div class="col-lg-4 col-md col-sm col bbook" >
+        <div class="row">
+          <p class="hp">Working Hours</p>
+        </div>
+        <div class="row">
+          <p>Check out Dr. Nechupadam’s Office hours to plan your visit.</p>
+        </div>
+        <div class="row">
+          <div class="col-lg-5">
+            <p class="p1">Monday</p>
+          </div>
+          <div class="col-lg">
+            <p class="p4">9AM - 6PM</p>
+          </div>
+          <div class="col-lg">
+            <button>Book <span><img src="{% static 'images/clock-navbar.png' %}" alt="" width="100%"></span></button>
+          </div>
+          <hr>
+        </div>
+        <div class="row">
+          <div class="col-lg-5">
+            <p class="p1">Tuesday</p>
+          </div>
+          <div class="col-lg">
+            <p class="p4">9AM - 6PM</p>
+          </div>
+          <div class="col-lg">
+            <button>Book <span><img src="{% static 'images/clock-navbar.png' %}" alt="" width="100%"></span></button>
+          </div>
+          <hr>
+        </div>
+        <div class="row">
+          <div class="col-lg-5">
+            <p class="p1">Wednesday</p>
+          </div>
+          <div class="col-lg">
+            <p class="p4">9AM - 6PM</p>
+          </div>
+          <div class="col-lg">
+            <button>Book <span><img src="{% static 'images/clock-navbar.png' %}" alt="" width="100%"></span></button>
+          </div>
+          <hr>
+        </div>
+        <div class="row">
+          <div class="col-lg-5">
+            <p class="p1">Thursday</p>
+          </div>
+          <div class="col-lg">
+            <p class="p4">9AM - 6PM</p>
+          </div>
+          <div class="col-lg">
+            <button>Book <span><img src="{% static 'images/clock-navbar.png' %}" alt="" width="100%"></span></button>
+          </div>
+          <hr>
+        </div>
+        <div class="row">
+          <div class="col-lg-5">
+            <p class="p1">Friday</p>
+          </div>
+          <div class="col-lg">
+            <p class="p4">9AM - 6PM</p>
+          </div>
+          <div class="col-lg">
+            <button>Book <span><img src="{% static 'images/clock-navbar.png' %}" alt="" width="100%"></span></button>
+          </div>
+          <hr>
+        </div>
+        <div class="row">
+          <div class="col-lg-5">
+            <p class="p1">Saturday-sunday</p>
+          </div>
+          <div class="col-lg">
+            <p class="p4">Closed</p>
+          </div>
+          <div class="col-lg">
+          </div>
+        </div>
+      </div>
+    </div>
+  <!-- </div> -->
+  
+  
+  <div class="row down-map">
+    <div class="col-lg-3 col-md-6 col-sm fadein">
+    <center>  <div class="col-lg-3 contact-info"><img src="{% static 'images/247call.png' %}" width="100%" alt=""></div></center>
+      <div class="row">
+      <div class="col-lg">
+      <h5>Emergency Phone</h5>
+      <p>+919946602221 <br>
+        Call us Anytime 24/7</p></div></div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm fadein">
+      <center>  <div class="col-lg-3 contact-info"><img src="{% static 'images/address.png' %}" width="100%" alt=""></div></center>
+      <div class="row">
+        <div class="col-lg">
+          <h5>Address</h5>
+          <p>Dr Nechupadam Dental Clinic #20 <br> Third Floor, GCDA Commercial <br> Complex, Marine Drive, Kochi, <br> Kerala 682031</p>
+        </div></div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm fadein">
+      <center>  <div class="col-lg-3 contact-info"><img src="{% static 'images/bbf.png' %}" width="100%" alt=""></div></center>
+      <div class="row">
+        <div class="col-lg">
+      <h5>Book By Phone</h5>
+      <p>Engage fully tested process top line platform clients.</p></div></div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm fadein">
+      <center>  <div class="col-lg-3 contact-info"><img src="{% static 'images/emailus.png' %}" width="100%" alt=""></div></center>
+      <div class="row">
+        <div class="col-lg">
+      <h5>Email Us</h5>
+      <p>User generated content in real time offshoring.</p></div></div>
+    </div>
+  </div>
+  </div>
+  
+  <div class="container p-4">
+    <div class="row">
+      <div class="col-lg">
+        <form action="{% url 'medical_report' %}" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="mb-4">
+            <label for="exampleInputname" class="form-label">Your Name</label>
+            <input type="text" class="form-control" id="exampleInputname" name="name" required>
+          </div>
+          <div class="mb-4">
+            <label for="exampleInputAddress" class="form-label">Your Address</label>
+            <textarea class="form-control" id="exampleInputAddress" name="address"></textarea>
+          </div>
+          <div class="mb-4">
+            <label for="exampleInputCity" class="form-label">City</label>
+            <input type="text" class="form-control" id="exampleInputCity" name="city">
+          </div>
+          <div class="mb-4">
+            <label for="exampleInputPostcode" class="form-label">Postcode</label>
+            <input type="text" class="form-control" id="exampleInputPostcode" name="code">
+          </div>
+          <div class="mb-4">
+            <label for="exampleInputPhone" class="form-label">Phone number</label>
+            <input type="text" class="form-control" id="exampleInputphone" name="phone" pattern="[0-9]{10}" title="Please enter exactly 10 digits" required>
+          </div>
+          <div class="mb-4">
+            <label for="exampleInputEmail" class="form-label">Your Email</label>
+            <input type="email" class="form-control" id="exampleInputEmail" name="email" required>
+          </div>
+          <div class="mb-4">
+            <label for="exampleInputfile" class="form-label">Your Report/medical file <span style="color:red;"> (Only PDF's Allowed)</span></label>
+            <input type="file" class="form-control" id="exampleInputfile" name="orufile" required>
+          </div>
+        
+          <button type="submit" class="btn001">Submit</button>
+        </form>
+      </div>
+      <div class="col-lg q-2 fadein">
+        <h2>You can submit your</h2>
+        <h1>MEDICAL REPORT HERE</h1>
+        <h4>YOUR CAN SUBMIT YOUR MEDICAL/SCAN REPORT TO GET ANALYZED BY OUR DOCTOR FOR FURTHER PROCESS</h4>
+      </div>
+    </div>
+  </div>
+  
+  
+  <div class="container pr-bg">
+      <div class="row">
+        <div class="col-lg">
+          <div class="row">
+            <p class="pr1">Proud Member Of</p>
+          </div>
+          <div class="row">
+            <p class="pr2">Nechupadam Dental clinics prouds itself of being one empowered manufactured products and services whereas parallel platforms.</p>
+          </div>
+        </div>
+        <div class="col-lg">
+          <img src="{% static 'images/Artboard-1.png' %}" width="100%" alt="">
+        </div>
+      </div>
+  </div>
+  
+  
+
+<script>
+    // Get the current date in the format "YYYY-MM-DD"
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('exampleInputdate').setAttribute('min', today);
+  document.getElementById('exampleInputdate2').setAttribute('min', today);
+
+</script>
+
+
+  {% comment %} <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> {% endcomment %}
+
+{% endblock %}

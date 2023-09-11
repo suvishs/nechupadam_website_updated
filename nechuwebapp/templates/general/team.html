@@ -1,0 +1,245 @@
+{% extends 'general/main.html' %}
+{% load static %}
+{% block content %}
+
+
+<style>
+       
+  @media screen and (max-width:1500px) {
+    .sec1{
+    padding:100px 0px 0px 0px ;
+  }
+  .bg1{
+      background: url('../images/dr3-scaled.jpg') no-repeat;
+      background-size: 100%;
+  }
+  }
+  @media screen and (max-width:991px) {
+  .sec1 p{
+      /* margin-top: -60px; */
+      /* font-size: 9px; */
+      padding: 0% 30% 0% 2%;
+  }
+  }
+  @media screen and (max-width:767px) {
+    .sec1{
+      background: url('../images/dr3-scaled.jpg') no-repeat;
+      background-size: 100%;
+  }
+  .sec1 h4{
+      margin-top: -100px;
+      font-size: 13px;
+      padding: 0% 6%;
+  }
+  .sec1 h1{
+      margin-top: -85px;
+      font-size: 20px;
+      padding: 0% 6%;
+  }
+  .sec1 p{
+      margin-top: -60px;
+      font-size: 9px;
+      padding: 0% 30% 0% 6%;
+  }
+  .bg1{
+      background: none;
+  }
+  }
+  .pro-2 {
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+min-height: 600px;
+margin-top: 55px !important;
+margin: auto;
+text-align: left;
+font-family: arial;
+border-radius: 0%;
+}
+.tt{
+color: #b868a0;
+text-align: center;
+margin-top: 10%;
+}
+  .tt h1{
+      font-size: 60px;
+  }
+  .free{
+      padding: 50px;
+      background-color: rgba(250, 235, 215, 0);
+  }
+  @media screen and (max-width:767px) {
+    .tt h1{
+      font-size: 30px;
+  }
+  }
+@media screen and (max-width:991px) {
+.down-map img{
+width: 20%;
+}
+}
+@media screen and (max-width:767px) {
+.down-map img{
+width: 20%;
+}
+}
+
+
+
+
+
+
+
+
+.container2 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.card2 {
+  width: 30%;
+  margin-bottom: 50px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s;
+}
+
+.card2 img {
+  width: 100%;
+  height: auto;
+}
+
+.card2-body {
+  padding: 20px;
+}
+
+.name {
+  font-size: 34px;
+  color:#0e54ae;
+  position: relative; /* Add relative positioning */
+}
+
+/* Add border styles for the name */
+.name::after {
+  content: "";
+  position: absolute;
+  bottom: -15px; /* Adjust this value for desired spacing */
+  left: 0;
+  width: 30%;
+  height: 3px; /* Adjust the thickness of the border as needed */
+  background-color: rgba(188, 116, 165, 1); /* Purple color */
+}
+
+.description {
+  font-size: 16px;
+}
+
+/* Hover effect */
+.card2:hover {
+  transform: scale(1.05);
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  .container2 {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .card2 {
+      width: 100%;
+  }
+}
+
+
+
+
+</style>
+
+<body style="background: url({% static 'images/dr3-scaled.jpg' %}) no-repeat; background-size: 100%; z-index:5;">
+
+
+
+  <div class="container">
+    <div class="row sec1">
+        <div class="col-lg col-md col-md">
+            <div class="row"><h4 style="color: #b868a0;">OUR FOUNDER</h4></div>
+            <div class="row"><h1 style="color: #0e54ae;">DR. K.T. PAULOSE</h1></div>
+            <div class="row"><p>Dr. K. T. Paulose BDS, MDS is Chairman and founder of Nechupadam Dental Clinic as well as senior orthodontist and oral prosthetic esthetic specialist. He has been serving for the last 53 years and is well known in India and respected among colleagues for his expertise in the dental field.</p></div>
+        </div>
+            <div class="col-lg free">
+            </div>
+    </div>
+    <div class="row" style="margin-top:-50px;">
+      <div class="col-lg-6 col-md col-md">
+        <img src="{% static 'images/Signature-Logo-VECTOR.png' %}" alt="" width="80%">
+      </div>
+    </div>
+</div>
+
+</div>
+
+
+  <div class="container2">
+    {% for i in staffs %}
+    <div class="card2">
+      
+        <img src="{{i.imageURL}}" alt="Card 1">
+        <div class="card2-body">
+            <h2 class="name">{{i.name}}</h2>
+            <br>
+            <br>
+            <h6 style="color:black;">{{i.position}}</h6>
+            <p class="description">{{i.description}}</p>
+        </div>
+      
+    </div>
+    {% endfor %}
+  </div>
+
+
+
+
+
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 con-cont"><p>Contact</p></div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-lg-6 con-cont2">Dr. Thomas Nechupadam</div>
+          </div>
+        <div class="row down-map">
+            <div class="col-lg-3">
+            <center>  <div class="col-lg-3"><img src="{% static 'images/247call.png' %}" width="100%" alt=""></div></center>
+              <div class="row">
+              <div class="col-lg">
+              <h5>Emergency Phone</h5>
+              <p>+919946602221 <br>
+                Call us Anytime 24/7</p></div></div>
+            </div>
+            <div class="col-lg-3">
+              <center>  <div class="col-lg-3"><img src="{% static 'images/address.png' %}" width="100%" alt=""></div></center>
+              <div class="row">
+                <div class="col-lg">
+                  <h5>Address</h5>
+                  <p>Dr Nechupadam Dental Clinic #20 <br> Third Floor, GCDA Commercial <br> Complex, Marine Drive, Kochi, <br> Kerala 682031</p>
+                </div></div>
+            </div>
+            <div class="col-lg-3">
+              <center>  <div class="col-lg-3"><img src="{% static 'images/bbf.png' %}" width="100%" alt=""></div></center>
+              <div class="row">
+                <div class="col-lg">
+              <h5>Book By Phone</h5>
+              <p>Engage fully tested process top line platform clients.</p></div></div>
+            </div>
+            <div class="col-lg-3">
+              <center>  <div class="col-lg-3"><img src="{% static 'images/emailus.png' %}" width="100%" alt=""></div></center>
+              <div class="row">
+                <div class="col-lg">
+              <h5>Email Us</h5>
+              <p>User generated content in real time offshoring.</p></div></div>
+            </div>
+          </div>
+    </div>
+
+
+{% endblock %}

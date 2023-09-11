@@ -1,0 +1,47 @@
+{% extends 'nechuadmin/base.html' %}
+{% load static %}
+{% block content %}
+
+<h1 class="card-title fw-semibold mb-4" style="font-size:25px;">View Medical Reports</h1>
+
+
+<div class="container mt-4">
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>City</th>
+                    <th>Pincode</th>
+                    <th>Phone Number</th>
+                    <th>Email</th>
+                    <th>File (PDF)</th>
+                    <th>Submitted On</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in reports %}
+                <tr>
+                    <td>{{i.name}}</td>
+                    <td>{{i.address}}</td>
+                    <td>{{i.city}}</td>
+                    <td>{{i.post}}</td>
+                    <td>{{i.phone}}</td>
+                    <td>{{i.email}}</td>
+                    <td>
+                        <a href="{{ i.document_name.url }}" target="_blank">View Report</a>
+                    </td>
+                    <td>{{i.submitted_on}}</td>
+
+                </tr>
+                {% endfor %}
+
+                <!-- Add more rows as needed -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'nechuadmin/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<h1 class="card-title fw-semibold mb-4" style="font-size:25px;">View Bookings</h1>
+
+
+<div class="container mt-4">
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Phone Number</th>
+                    <th>Doctor</th>
+                    <th>Requested Date</th>
+                    <th>Requested On</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in booking %}
+                <tr>
+                    <td>{{i.name}}</td>
+                    <td>{{i.phone}}</td>
+                    <td>{{i.doctor}}</td>
+                    <td>{{i.date}}</td>
+                    <td>{{i.submitted_on}}</td>
+
+                </tr>
+                {% endfor %}
+
+                <!-- Add more rows as needed -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

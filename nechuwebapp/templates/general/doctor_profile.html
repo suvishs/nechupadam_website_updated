@@ -1,0 +1,287 @@
+{% extends 'general/main.html' %}
+{% load static %}
+{% block content %}
+
+
+<style>
+    .sizing{
+      margin: 80px 0px 0px 100px;
+    }
+    .bg{
+      background: url('../images/DSC04090white-scaled.jpg') no-repeat;
+      background-size:cover;
+    }
+
+    .button2 {
+  cursor: pointer;
+  position: relative;
+  padding: 10px 24px;
+  font-size: 18px;
+  color: rgb(24, 83, 161);
+  border: 2px solid rgb(24, 83, 161);;
+  border-radius: 3px;
+  background-color: transparent;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+  overflow: hidden;
+}
+
+.button2::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 50px;
+  height: 50px;
+  border-radius: inherit;
+  scale: 0;
+  z-index: -1;
+  background-color: rgb(24, 83, 161);;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.button2:hover::before {
+  scale: 3;
+}
+
+.button2:hover {
+  color: #212121;
+  scale: 1.0;
+}
+
+.button2:active {
+  scale: 1;
+}
+
+.sub-125{
+  z-index: 2;
+  font-size: 25px;
+  background-color: rgb(24, 83, 161);
+  padding: 30px 0px 30px 0px;
+  margin: 40px 0px 40px -30px;
+}
+.sub-1252 .img2{
+  width: 70%;
+  margin-left:10%;
+  margin-top: 15%;
+}
+.sub-1252 form{
+  margin-left: 30px;
+  margin-right: 3px;
+}
+</style>
+
+<body style="background-image:url({% static 'images/b-scaled.png' %}); background-size: 100%; background-repeat: no-repeat;">
+
+
+<div class="container-fluid  bg">
+    <div class="row ">
+  
+      <div class="col-lg-6">
+        <div class="sizing">
+        <div class="row app-cont">
+          <p>Dr. Thomas</p>
+          </div>
+          <div class="row app-cont2">
+          <p>Nechupadam</p>
+          </div>
+          <h4>From humble beginnings to state of the art international dental care</h4>
+            <hr>
+            <br>
+  
+            <span><button class="button2">
+              Facebook
+            </button></span>
+            <span><button class="button2">
+              Twitter
+            </button></span>
+            <span><button class="button2">
+              LinkedIn
+            </button></span>
+  
+            <div class="row" style="text-align: center; padding-top: 9%;">
+                <div class="col-lg-3">
+                  <img src="{% static 'images/address.png' %}" style="mix-blend-mode: darken;" alt="">
+                  <h6>Available on Call</h6>
+                </div>
+                <div class="col-lg-3">
+                  <img src="{% static 'images/address.png' %}" style="mix-blend-mode: darken;" alt="">
+                  <h6>Award Winning</h6>
+                </div>
+                <div class="col-lg-3">
+                  <img src="{% static 'images/address.png' %}" style="mix-blend-mode: darken;" alt="">
+                  <h6>Dental Care</h6>
+                </div>
+                <div class="col-lg-3">
+                  <img src="{% static 'images/address.png' %}" style="mix-blend-mode: darken;" alt="">
+                  <h6>1st Class Tools</h6>
+                </div>
+            </div>
+          </div>
+      </div>
+      <div class="col-lg-6">
+        <img src="{% static 'images/02-1.png' %}" width="90%" alt="">
+    </div>
+    </div>
+  </div>
+  
+  <div class="container">
+    <div class="row">
+  
+      <div class="col-lg sub-1252" style="background-color: #dadada;">
+        <p>A Perfect Smile Guaranteed</p>
+        <hr>
+        <div class="row">
+  
+            <div class="col-lg">
+              <form action="{% url 'booking' %}" method="POST">
+                {% csrf_token %}
+                <div class="mb-4">
+                  <label for="exampleInputname" class="form-label">Your Name</label>
+                  <input type="text" class="form-control" id="exampleInputname" name="name">
+                </div>
+                <div class="mb-4">
+                  <label for="exampleInputPhone" class="form-label">Phone number</label>
+                  <input type="text" class="form-control" id="exampleInputphone" name="phone">
+                </div>
+                <select class="form-select mb-4" aria-label="Default select example" name="doctor">
+                  <option selected disabled>Select Your Dentist</option>
+                  <option value="Dr.Thomas Nechupadam">Dr.Thomas Nechupadam</option>
+                  <option value="Dr.Nithia Sara Thomas">Dr.Nithia Sara Thomas</option>
+                  <option value="Dr.Sreelakshmi Surrej">Dr.Sreelakshmi Surrej</option>
+                </select>
+                <div class="mb-4">
+                    <input type="date" placeholder="Appointment date *" class="form-control" id="exampleInputdate" min="{{ today }}" name="date" required>
+                </div>
+                <button type="submit" class="btn">Book Your Dentist</button>
+              </form>
+            </div>
+            
+            <div class="col-lg">
+              <img class="img2" src="../images/img-booking.png " alt="">
+            </div>
+        </div>
+      </div>
+      <div class="col-lg sub-125">
+        <hr>
+        <p>" My family trusts Dr. Thomas Nechupadam completely, he’s been with us for years and as helped us on numerous occasions "</p>
+        <hr>
+        <img class="img1" src="{% static 'images/signature.png' %}" alt="">
+      </div>
+    </div>
+  </div>
+  
+  <div class="container">
+      <div class="row" style="margin-top: 10%; margin-bottom: 10%; text-align: justify;">
+          <div class="col-lg">
+            <div class="row mb-1">
+              <p>Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.</p>
+            </div>
+            <div class="row mb-3" style="margin-left: 0px;">
+              Podcasting operational change management inside of workflows to establish a framework. Taking seamless key performance indicators offline to maximise the long tail streamlined cloud solution.</div>
+            <div class="row mb-2">
+              <img src="{% static 'images/DSC_3135-2048x1365oooo.jpg' %}" alt="">
+            </div>
+          </div>
+          <div class="col-lg">
+            <div class="row mb-2">
+                <p>Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas. Dramatically maintain clicks-and-mortar solutions without functional solutions.</p>
+            </div>
+            <div class="row mb-2">
+              <p>Completely synergize resource taxing relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas. Dynamically innovate resource-leveling customer service for state of the art customer service.</p>
+            </div>
+            <div class="row mb-2">
+                <p>Objectively innovate empowered manufactured products whereas parallel platforms. Holisticly predominate extensible testing procedures for reliable supply chains. Dramatically engage top-line web services vis-a-vis cutting-edge deliverables.</p>
+            </div>
+            <div class="row">
+              <p>Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation.</p>
+          </div>
+          </div>
+          <div class="col-lg">
+              <img src="{% static 'images/work time.png' %}" width="100%" alt="">
+          </div>
+  
+      </div>
+      <hr>
+  </div>
+  
+  <div class="container mt-5">
+      <div class="row">
+          <div class="col-lg-4">
+            <img src="{% static 'images/biography.png' %}" width="100%" alt="">
+          </div>
+          <div class="col-lg">
+            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Work Experience</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Awards & Achievements</button>
+              </li>
+            </ul>
+            <div class="tab-content" id="pills-tabContent">
+              <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0"><p>
+                Dr Thomas K Paulose <br>
+  Name: Dr Thomas Kalankamari Paulose known as Dr Nechupadam<br>
+  Age : 43 years<br>
+  Years in Clinical Experience: 22 years<br>
+  Permanent Residential Address<br>
+  Nechupadam 14D Link Horizon Marine Drive Kochi Kerala India 682011<br>
+  Official Address<br>
+  Dr Nechupadam Dental Clinic #20 GCDA Commercial Complex Marine Drive Kochi 682031 Kerala India<br>
+  Clinical Experience<br>
+  Resident @ Yenepoya Dental College Aug 1999 to Aug 2000.<br>
+  Dental Surgeon @ Nechupadam Dental Clinic Kolenchery October 2000 – Nov 2001<br>
+  Orthodontic Resident @ JSS Dental College Mysore Dec2001- Mar2005<br>
+  Orthodontist and Cheif Clinician @ Nechupadam Dental Clinic Marine Drive April 2005 – Present<br>
+  Qualifications<br>
+  1, Bachelor of Dental Surgery BDS<br>
+  Year of Passing Exams : 1999<br>
+  University: Manglore University<br>
+  College : Yenepoya Dental College, Manglore<br>
+  2, Master of Dental Surgery. MDS<br>
+  (Orthodontics and Dentofacial Orthopedics)<br>
+  Year of Passing Exams : 2005<br>
+  University : Rajiv Gandhi University of Health Sciences, Karnataka<br>
+  College: JSS Dental College, Mysore<br>
+  Certifications :<br>
+  Endodontic Training under Ben Johnson of Tulsa and Dr Omar Zidan of Minnesota University USA 2001.<br>
+  Didactic Implantology and Implant Prosthetic training under Manuel Chanevaz of Lille Medical University of France <br>2001.<br>
+  Fastbraces Training Banglore 2016<br>
+  Smylist Certification On Functional Smile under Dr Maria Csillag Budapest, Hungary Mar 2018<br>
+  Invisalign specific trainings<br>
+  Invisalign Certification 2016<br>
+  Invisalign advanced Biomechanics under John Morton And Dr. Christina Viyuela – Aug 2016<br>
+  Management of Complex Orthodontic Cases By Jorg Schwarz (Germany) and Kamy Malekian (Spain) March 2017
+  </p></div>
+              <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0"><p>
+                Quickly aggregate B2B users and worldwide potentialities. Progressively plagiarize resource-leveling e-commerce through resource-leveling core competencies. Dramatically mesh low-risk high-yield alignments before transparent e-tailers. <br>
+                <br>
+  Appropriately empower dynamic leadership skills after business portals. Globally myocardinate interactive supply chains with distinctive quality vectors. Globally revolutionize global sources through interoperable services.<br>
+  <br>
+  Enthusiastically mesh long-term high-impact infrastructures vis-a-vis efficient customer service. Professionally fashion wireless leadership rather than prospective experiences. Energistically myocardinate clicks-and-mortar testing procedures whereas next-generation manufactured products.<br>
+              </p></div>
+            </div>
+          </div>
+      </div>
+  </div>
+  
+  <div class="container-fluid">
+    <div class="row">
+        <div class="col-lg">
+            <div style="width: 100%; margin-top: 10%;">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d836.8046655878255!2d76.27580913526829!3d9.978402688572016!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b080d540516aaab%3A0x502cb8c09ec4c7fa!2sDr%20Nechupadam%20Dental%20Clinic!5e0!3m2!1sen!2sin!4v1692390824345!5m2!1sen!2sin" width="100%" height="600" frameborder="0" style="border:0"></iframe>
+             </div>
+        </div>
+    </div>
+  </div>
+
+  <script>
+    // Get the current date in the format "YYYY-MM-DD"
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('exampleInputdate').setAttribute('min', today);
+  </script>
+
+
+
+{% endblock %}

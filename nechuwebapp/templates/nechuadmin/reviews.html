@@ -1,0 +1,140 @@
+{% extends 'nechuadmin/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<h1 class="card-title fw-semibold mb-4" style="font-size:25px;">Manage Reviews</h1>
+<br>
+<br>
+<h5 class="card-title fw-semibold mb-4">Add Reviews</h5>
+
+  <div class="custom-card" style="box-shadow: 2px 2px 15px rgba(188, 116, 165, 0.5); padding: 20px;">
+    <form action="{% url 'add_review' %}" enctype="multipart/form-data" method="POST">
+      {% csrf_token %}
+      <div class="mb-3">
+        <label for="treatmentTitle" class="form-label">Name</label>
+        <input type="text" class="form-control" id="treatmentTitle" aria-describedby="titleHelp" name="name">
+      </div>
+      <div class="mb-3">
+        <label for="treatmentImage" class="form-label">Image</label>
+        <input type="file" class="form-control" id="treatmentImage" name="image">
+      </div>
+      <div class="mb-3">
+        <label for="treatmentDescription" class="form-label">Review</label>
+        <textarea class="form-control" id="treatmentDescription" rows="4" name="review"></textarea>
+      </div>
+      <button type="submit" class="btn" style="background-color:#bc74a5; color:white;">Submit</button>
+    </form>
+  </div>
+
+<br>
+<br>
+<br>
+<br>
+
+<h5 class="card-title fw-semibold mb-4">View Reviews</h5>
+<br>
+<style>
+    .review-box {
+      border: 1px solid #ccc;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      margin: 10px;
+      position: relative;
+      max-height:200px;
+      overflow:scroll;
+    }
+
+    .reviewer-image {
+      width: 60px;
+      height: 68px;
+      border-radius: 50%;
+      border:1px solid black;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+    }
+
+    .reviewer-name {
+      margin-left: 73px;
+      font-weight: bold;
+      font-size:20px;
+    }
+
+    .review-text {
+      margin-top: 60px;
+    }
+
+
+    .edit-button
+    {
+      padding:5px;
+      border:none;
+      background-color:blue;
+      color:white;
+    }
+
+    .edit-button:hover
+    {
+      background-color:violet;
+    }
+
+
+    .delete-button
+    {
+      padding:5px;
+      border:none;
+      background-color:red;
+      color:white;
+    }
+
+    .delete-button:hover
+    {
+      background-color:violet;
+    }
+  </style>
+
+  {% comment %} <div class="container">
+    <div class="row">
+      {% for i in reviews %}
+
+      <div class="col-md-4">
+        <div class="review-box">
+          <img src="{{i.imageURL}}" alt="Nechupadam_Review" class="reviewer-image">
+          <span class="reviewer-name">{{i.name}}</span>
+          <p class="review-text">
+            {{i.review}}
+          </p>
+        </div>
+      </div>
+
+      {% endfor %}
+
+    </div>
+  </div> {% endcomment %}
+
+
+  <div class="container">
+    <div class="row">
+      {% for i in reviews %}
+  
+      <div class="col-md-4">
+        <div class="review-box">
+          <img src="{{i.imageURL}}" alt="Nechupadam_Review" class="reviewer-image">
+          <span class="reviewer-name">{{i.name}}</span>
+          <p class="review-text">
+            {{i.review}}
+          </p>
+          <div class="buttons">
+            <a href="{% url 'edit_review' i.pk %}"><button class="edit-button">Edit</button></a>
+            <a href="{% url 'delete_review' i.pk  %}"><button class="delete-button">Delete</button></a>
+          </div>
+        </div>
+      </div>
+  
+      {% endfor %}
+    </div>
+  </div>
+  
+
+{% endblock %}

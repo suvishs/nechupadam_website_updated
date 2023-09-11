@@ -1,0 +1,215 @@
+.navbar {
+    background-color: transparent;
+    /* padding: 5px; */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adding shadow */
+    padding-left:30px;
+    padding-right:30px;
+    margin-top:-20px;
+}
+
+.navbar-toggler {
+    border: none; /* Removing border from the toggle button */
+}
+
+.navbar-brand {
+    margin-left: 0; /* Align logo to the right */
+    margin-right: auto; /* Push the logo to the right */
+}
+
+.navbar-nav .nav-link {
+    font-family: verdana;
+    margin-right: 15px;
+    font-size:14px;
+    padding:15px;
+}
+
+@media (max-width: 767px) {
+    .navbar-nav {
+        text-align: center; /* Center-align the items in mobile view */
+    }
+    .navbar-toggler {
+        margin-right: auto; /* Push the toggle button to the right in mobile view */
+    }
+    .navbar-brand {
+        margin-left: auto; /* Push the logo to the right in mobile view */
+        margin-right: 0;
+    }
+}
+
+
+.transparent-header {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically in responsive mode */
+    align-items: center; /* Center-align items vertically in responsive mode */
+    text-align: center; /* Center-align text in responsive mode */
+}
+
+.right-images {
+    display: block; /* Display the images in responsive mode */
+    margin-top: 10px; /* Add some spacing between images and the logo */
+}
+
+@media (min-width: 768px) {
+    .transparent-header {
+        flex-direction: row; /* Revert to horizontal layout for larger screens */
+        justify-content: space-between;
+        text-align: left; /* Align text to the left for larger screens */
+    }
+
+    .right-images {
+        display: flex;
+        align-items: center;
+        margin-top: 0; /* Reset margin for larger screens */
+    }
+}
+
+
+/* footer */
+@media screen and (max-width:1500px) {
+.award{
+text-align: center;
+/* font-size: 13px; */
+font-weight: 500;
+background: url(../images/footer-awards-new.png);
+background-size: 100%;
+background-repeat: no-repeat;
+margin-left: -150px;
+}
+}
+@media screen and (max-width:991px) {
+    .award{
+     width: 10%;
+    }
+    }
+@media screen and (max-width:767px) {
+.award{
+    width: 80%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 12px;
+}
+}
+    
+h4{
+color: #1853a1;
+}
+.foot{
+font-size: 12px;
+}
+.fluid{
+background-color: #1853a1;
+color: white;
+padding: 40px;
+}
+
+/* Footer */
+.fluid{
+background-color: #1853a1;
+color: white;
+/* padding: 40px; */
+}
+.nav-link{
+color: white;
+}
+.copyright{
+color: rgb(197, 197, 197);
+}
+
+@media screen and (max-width:1500px) {
+.row .a{
+    line-height:1.9em;
+}
+}
+@media screen and (max-width:991px) {
+.row .a{
+    line-height:1.9em;
+}
+}
+@media screen and (max-width:767px) {
+.row .a{
+    line-height:1.9em;
+}
+}
+.tcol{
+color: #b868a0;
+}
+footer a{
+text-decoration: none;
+}
+footer li{
+font-size: 13px;
+}
+@media screen and (max-width:1500px) {
+    .ft1 img{
+        width: 70%;
+    }
+    } 
+@media screen and (max-width:991px) {
+    .ft1 img{
+        width: 30%;
+    }
+    }    
+@media screen and (max-width:767px) {
+.ft1 img{
+    width: 70%;
+}
+}
+@media screen and (max-width:767px) {
+
+.nec{
+    margin-left: 10px;
+}
+}
+.abt{
+    margin-left: -50px;
+}
+@media screen and (max-width:767px) {
+    .abt{
+        margin-left: 10px;
+    }
+}
+        /* Style for the WhatsApp button */
+.whatsapp-button {
+position: fixed;
+bottom: 20px; /* Adjust as needed */
+right: 20px; /* Adjust as needed */
+background-color: #25d366; /* Green background color */
+width: 60px;
+height: 60px;
+border-radius: 50%;
+box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Shadow effect */
+display: flex;
+justify-content: center;
+align-items: center;
+cursor: pointer;
+z-index: 1000; /* Ensure it's above other content */
+}
+
+/* Style for the WhatsApp icon (white color) */
+.whatsapp-button i {
+font-size: 28px;
+color: white;
+}
+
+/* Hover effect for the button */
+.whatsapp-button:hover {
+background-color: #128c7e; /* Darker green on hover */
+transition: background-color 0.3s ease;
+}
+
+/* Adjust button size and position for smaller screens */
+@media (max-width: 768px) {
+.whatsapp-button {
+    bottom: 10px;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+}
+
+.whatsapp-button i {
+    font-size: 20px;
+}
+}
+
+

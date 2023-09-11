@@ -1,0 +1,54 @@
+{% extends 'nechuadmin/base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+
+@media (max-width: 768px) 
+{
+  .responsive-description 
+  {
+    max-width: 100%; /* Adjust this value as needed */
+    margin: 0;
+    padding: 10px; /* Add padding to provide space around the content */
+  }
+}
+
+</style>
+
+
+<div class="container d-flex align-items-center justify-content-center" style="min-height: 100vh;">
+    <div class="col-md-6">
+      <h2 class="text-center">{{get_treatment.title}}</h2>
+
+      <br>
+      <br>
+
+      <div class="text-center">
+        <img src="{{get_treatment.imageURL}}" alt="Treatment Image" class="img-fluid" style="max-width: 250px;">
+      </div>
+  
+      <br>
+      <br>
+      <div class="responsive-description" style="max-width: 100%; margin: 0 auto;">
+        <p>{{ get_treatment.description|linebreaks }}</p>
+      </div>
+      <div class="text-center">
+
+        <a href="{{get_treatment.know_more_link}}" class="btn btn-primary">Know More</a>
+      </div>
+
+      <br>
+      <br>
+
+      <div class="d-flex align-items-center justify-content-center" style="max-height: 600px; overflow: hidden;">
+        <div class="embed-responsive embed-responsive-16by9" style="width: 100%; height: 100%;">
+          <iframe class="embed-responsive-item" src="{{get_treatment.youtube_link}}" width="100%" height="240px" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+
+    <br>
+</div>
+
+{% endblock %}

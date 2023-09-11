@@ -1,0 +1,188 @@
+
+{% extends 'general/main.html' %}
+{% load static %}
+
+{% block content %}
+
+
+
+<style>
+.card{
+  padding: 15px;
+  border: 1.9px solid #b868a0;
+  border-radius: 20px;
+  margin: 65px 35px 55px 35px;
+  position: relative;
+  display: inline-block;
+
+}
+.card .badge {
+position: absolute;
+top: -14px;
+left: 20px;
+padding: 7px 15px;
+border-radius: 5px;
+background-color:#1853a1;
+color: white;
+}
+.pad{
+  margin-top: 10%;
+}
+.side{
+  border-right: 2px solid rgba(0, 0, 0, 0.297);
+}
+.right::after {
+content: '';
+position: absolute;
+width: 65px;
+height: 65px;
+right: -82px;
+background-color: white;
+border: 4px solid #1853a1;
+top: 15px;
+border-radius: 50%;
+z-index: 1;
+}
+.right::before {
+content: " ";
+height: 0;
+position: absolute;
+top: 38px;
+width: 0;
+z-index: 1;
+right: -12px;
+border: medium solid #1853a1;
+border-width: 10px 0 10px 10px;
+border-color: transparent transparent transparent #1853a1;
+}
+
+/* Add arrows to the right container (pointing left) */
+.left::before {
+content: " ";
+height: 0;
+position: absolute;
+top: 38px;
+width: 0;
+z-index: 1;
+left: -12px;
+border: medium solid #1853a1;
+border-width: 10px 10px 10px 0;
+border-color: transparent #1853a1 transparent transparent;
+}
+.left::after {
+content: url('') ;
+
+position: absolute;
+width: 65px;
+height: 65px;
+left: -82px;
+background-color: white;
+border: 4px solid #1853a1;
+top: 15px;
+border-radius: 50%;
+z-index: 2;
+}
+.committed-cont{
+margin: 0px 0px 0px 0px;
+}
+.committed-cont p{
+padding-top: 30px;
+padding-left: 23px;
+font-size: 25px;
+color: #b868a0;
+
+}
+
+
+.note p{
+background-color: #b868a0;
+padding-top: 5px;
+padding-bottom: 5px;
+border-radius: 20px;
+margin-bottom: 0px;
+color: white;
+}
+h4:after {
+content: '';
+display: block;
+position: relative;
+width: 50%;
+border: 2px solid #b868a0;
+margin-top: 8px; 
+margin-left: 0%;
+}
+</style>
+
+
+<body>
+
+
+
+<div class="container pt-5" >
+    <div class="row committed-cont">
+      <p style="text-align:center;">Dr.Thomas Nechupadam</p>
+    </div>
+    <div class="row committed-cont2">
+      <div class="col-lg">
+        <p style="text-align:center; font-size:40px;">Dental Care Process Explained</p>
+      </div>
+  </div>
+<div class="container mt-5" style="background-image:url('{% static 'images/DSC04197.png' %}');">
+<div class="row">
+  <div class="col-lg side">
+
+    <div class="card right">  
+      <span class="badge">Step 1</span>
+      <div class="container">
+        <h4>Free consultation with our technicians</h4>
+        <img src="{% static 'images/DSC04159-768x512.jpg' %}" alt="Avatar" style="width:100%">
+      </div>
+    </div>
+    
+    <div class="card right">  
+      <span class="badge">Step 3</span>
+
+      <div class="container">
+        <h4>Arrival to Nechupadam Dental clinic</h4>
+        <img src="{% static 'images/DSC04141-768x1152.jpg' %}" alt="Avatar" style="width:100%">
+      </div>
+    </div>
+
+    <div class="card right"> 
+      <span class="badge">Step 5</span>
+
+      <div class="container">
+        <h4>Follow up check</h4>
+        <img src="{% static 'images/DSC04082-768x512.jpg' %}" alt="Avatar" style="width:100%">
+      </div>
+    </div>
+
+    
+
+
+  </div>
+  <div class="col-lg pad">
+    
+    <div class="card left">  
+      <span class="badge">Step 2</span>
+      <div class="container">
+        <h4>Electronic contract</h4>
+        <img src="{% static 'images/DSC04219-768x512.jpg' %}" alt="Avatar" style="width:100%">
+      </div>
+    </div>
+
+    <div class="card left">  
+      <span class="badge">Step 4</span>
+      <div class="container">
+        <h4>Dental surgery</h4>
+        <img src="{% static 'images/DSC04179-768x512.jpg' %}" alt="Avatar" style="width:100%">
+      </div>
+    </div>
+
+   
+  </div>
+</div>
+</div>
+
+
+{% endblock %}

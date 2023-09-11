@@ -1,0 +1,32 @@
+{% extends 'nechuadmin/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+    <h2 style="text-align: center;" class="pt-5 pb-5">Edit Background Image 1</h2>
+</div>
+
+<form action="{% url 'edit_bg' get_bg.pk %}" method="POST" enctype="multipart/form-data" style="width: 500px; margin: auto;">
+    {% csrf_token %}
+    <div class="form-group">
+        <input type="text" class="form-control" name="title1" value="{{ get_bg.title1 }}" placeholder="Title">
+    </div>
+    <br>
+    <div class="form-group">
+        <input type="text" class="form-control" name="title2" value="{{ get_bg.title2 }}" placeholder="Title">
+    </div>
+    <br>
+    <div class="form-group">
+        Choose new image
+        <input type="file" class="form-control" id="treatmentImage" name="image">
+    </div>
+    <br>
+    <div class="form-group text-center">
+        <button type="submit" class="btn btn-primary" style="width: 200px;"><i class="fa fa-plus"></i> Update</button>
+    </div>
+</form>
+
+
+
+{% endblock %}

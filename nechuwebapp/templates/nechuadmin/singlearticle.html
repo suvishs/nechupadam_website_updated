@@ -1,0 +1,39 @@
+{% extends 'nechuadmin/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+    .center-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  
+    .centered-image {
+      max-width: 300px;
+    }
+</style>
+
+<h2 style="text-align:center;">{{ get_article.title }}</h2>
+<br>
+<div class="center-container">
+    <img src="{{ get_article.image.url }}" alt="{{ get_article.title }}" class="centered-image">
+</div>
+<br>
+<br>
+<h6>{{ get_article.content | linebreaks }}</h6>
+<br>
+<br>
+<h6 style="text-align:right;">Written By, {{get_article.author}}</h6>
+<h6 style="text-align:right;">Uploaded On, {{get_article.uploaded_date}}</h6>
+<h6 style="text-align:right;">Last Edited On, {{get_article.edited_date}}</h6>
+<br>
+
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'nechuadmin/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<h1 class="card-title fw-semibold mb-4" style="font-size:25px;">Manage YouTube Category</h1>
+<br>
+<div class="container mt-4">
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>Category</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for j in categories %} 
+            <tr>
+                <td>{{j.category}}</td>
+                <td><a href="{% url 'edit_youtubecategory' j.pk %}" class="btn" style="background-color:#bc74a5; color:white;">Update</a></td>
+                <td><a href="{% url 'delete_youtubecategory' j.pk %}" class="btn" style="background-color:red; color:white;">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

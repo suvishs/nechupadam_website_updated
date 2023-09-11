@@ -1,0 +1,75 @@
+{% extends 'general/main.html' %}
+
+
+{% block content %}
+
+<style>
+  .card-text
+  {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 4; /* Display only 4 lines */
+      -webkit-box-orient: vertical;
+  }
+
+    /* Custom styles for the card */
+    .custom-card {
+      background-color: #b868a0;
+      color: white;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease-in-out;
+      width:280px;
+    }
+
+    .custom-card:hover {
+      transform: scale(1.02); /* Make it slightly bigger on hover */
+    }
+
+    .card-text {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 4; /* Display only 4 lines */
+      -webkit-box-orient: vertical;
+    }
+
+    .custom-modal-lg {
+        max-width: 80%; /* Adjust the width as needed */
+    }
+
+</style>
+<h1 style="color:#1853a1; margin-left:70px; font-weight:700;">Treatments</h1>
+<br>
+<div class="container">
+  <div class="row" style="margin-left:44px;">
+    <!-- Card 1 -->
+    {% for i in treatments %}
+    <div class="col-md-3 mb-4" style="margin-right:85px;">
+      <a href="#" style="text-decoration: none; color: white;">
+        <div class="card custom-card">
+          <img src="{{ i.imageURL }}" class="card-img-top" alt="{{ i.title }}" height="280px">
+          <div class="card-body">
+            <h5 class="card-title">{{ i.title }}</h5>
+            <p class="card-text">{{ i.description }}</p>
+            <br>
+
+            <a href="{% url 'more_about_treatment' i.pk %}" class="btn btn-primary">
+              Read More
+            </a>
+
+          </div>
+        </div>
+      </a>
+    </div>
+
+    {% endfor %}
+
+  </div>
+
+</div>
+
+
+
+
+{% endblock %}

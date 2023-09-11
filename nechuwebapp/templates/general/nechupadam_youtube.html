@@ -1,0 +1,52 @@
+{% extends 'general/main.html' %}
+
+
+{% block content %}
+
+<style>
+
+    .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 10px;
+        margin: 0 35px; /* Adjust margin to create spacing between cards */
+      }
+  
+      .custom-cardtwo {
+        box-shadow: 0 4px 6px rgba(188, 116, 165, 0.5);
+        width: calc(42% - 7px); /* To create two cards in a row with spacing */
+        padding: 20px;
+        cursor: pointer;
+        transition: transform 0.2s;
+        margin-bottom:50px;
+      }
+  
+      .custom-cardtwo:hover {
+        transform: scale(1.05);
+      }
+
+      @media (max-width: 767px) {
+        .custom-cardtwo {
+          width: 100%; /* Adjust width for full width on mobile */
+        }
+      }
+
+</style>
+
+<h1 style="color:#1853a1; margin-left:70px; font-weight:700;">Nechupadam YouTube Videos</h1>
+<br>
+<div class="card-container" style="margin-left:70px;">
+
+    {% for i in youtube %}
+      <div class="custom-cardtwo" onclick="window.location.href=''">
+          <iframe class="embed-responsive-item" src="{{i.youtube_link}}" width="100%" height="240px" allowfullscreen></iframe>
+          <div class="card-body">
+          <h5 class="card-title" style="color:purple; text-align:center; padding-top:10px;">{{i.title}}</h5>
+        </div></a>
+      </div>
+    {% endfor %}
+  
+</div>
+
+{% endblock %}

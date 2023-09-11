@@ -1,0 +1,39 @@
+{% extends 'nechuadmin/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+    <h2 style="text-align: center;" class="pt-5 pb-5">Edit Staffs</h2>
+</div>
+
+<div class="custom-card" style="box-shadow: 2px 2px 15px rgba(188, 116, 165, 0.5); padding: 20px;">
+    <form action="{% url 'edit_staff' get_staff.pk %}" enctype="multipart/form-data" method="POST">
+      {% csrf_token %}
+      <div class="mb-3">
+        <label for="treatmentTitle" class="form-label">Name</label>
+        <input type="text" class="form-control" id="treatmentTitle" aria-describedby="titleHelp" name="name" value="{{get_staff.name}}">
+      </div>
+      <div class="mb-3">
+        <label for="treatmentImage" class="form-label">Image</label>
+        <input type="file" class="form-control" id="treatmentImage" name="image" value="{{get_staff.imageURL}}">
+      </div>
+      <div class="mb-3">
+        <label for="treatmentDescription" class="form-label">Description</label>
+        <textarea class="form-control" id="treatmentDescription" rows="4" name="description">{{get_staff.description}}</textarea>
+      </div>
+      <div class="mb-3">
+        <label for="treatmentTitl" class="form-label">Position</label>
+        <input type="text" class="form-control" id="treatmentTitl" aria-describedby="titleHelp" name="position" value="{{get_staff.position}}">
+      </div>
+      <button type="submit" class="btn" style="background-color:#bc74a5; color:white;">Update</button>
+    </form>
+</div>
+
+
+
+
+
+
+
+{% endblock %}

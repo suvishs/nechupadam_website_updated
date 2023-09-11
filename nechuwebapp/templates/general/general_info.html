@@ -1,0 +1,444 @@
+{% extends 'general/main.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<style>
+
+    
+    .bg-image{
+      background: url({% static 'images/DSC04197.png' %});
+      background-size: 100%;
+      background-repeat: no-repeat;
+    }
+    @media screen and (max-width:767px) {
+      .bg-image{
+      background: url({% static 'images/Nechupadam-logo-Black-1.png' %});
+      background-size: 80%;
+      background-repeat: no-repeat;
+    }
+    }
+    .general .one{
+      background-color: #ffffff00;
+    }
+    @media screen and (max-width:1500px) {
+  .n1{
+    margin-left: 10px;
+    margin-top: 100px;
+    margin-bottom: -30px;
+  }
+}
+@media screen and (max-width:991px) {
+  .n1{
+    margin-top: 100px;
+    margin-bottom: -30px;
+  }
+}
+@media screen and (max-width:676px) {
+  .n1{
+    margin: 0px;
+  }
+}
+@media screen and (max-width:1500px){
+  .num-cont p{
+    padding-top: 30px;
+    font-size: 35px;
+    margin-left: 15px;
+    color: #b868a0;
+  }
+}
+@media screen and (max-width:991px){
+  .num-cont p{
+    padding-top: 30px;
+    font-size: 35px;
+    margin-left: 15px;
+    color: #b868a0;
+  }
+}
+@media screen and (max-width:767px){
+  .num-cont p{
+    padding-top: 25%;
+    font-weight: 500;
+    font-size: 20px;
+    margin-left: 15px;
+    color: #b868a0;
+  }
+}
+@media screen and (max-width:1500px) {
+  .num-cont2{
+    font-size: 55px;
+    font-weight: 700;
+    color: rgb(24, 83, 161);
+    margin: -25px 0px 0px 0px;
+    text-align: left;
+  }
+}
+@media screen and (max-width:991px) {
+  .num-cont2{
+    font-size: 55px;
+    font-weight: 700;
+    color: rgb(24, 83, 161);
+    margin: -25px 0px 0px 0px;
+    text-align: left;
+  }
+}
+@media screen and (max-width:767px) {
+  .num-cont2{
+    line-height: 1;
+    font-size: 48px;
+    font-weight: 700;
+    color: rgb(24, 83, 161);
+    margin: -25px 0px 0px 0px;
+    text-align: left;
+  }
+}
+@media screen and (max-width:991px) {
+  .sec3{
+    font-size: 10px;
+  }
+}
+@media screen and (max-width:767px) {
+  .sec3{
+    font-size: 12.5px;
+    text-align: justify;
+  }
+}
+.committed-cont{
+  margin: 0px 0px 0px 0px;
+}
+.committed-cont p{
+  padding-top: 30px;
+  padding-left: 40px;
+  font-size: 35px;
+  color: #b868a0;
+}
+.committed-cont3{
+  margin: 0%;
+}
+.app-cont3{
+  font-size: 12px;
+}
+.c-1{
+  background-color: #b868a0;
+  border-radius: 0%;
+  margin-bottom: 0px;
+  height: 100%;
+  color: white;
+}
+.c-1 .card-body{
+  padding-top: 70px;
+  padding-bottom: 30px;
+}
+.c-1 .card-title{
+  padding-left: 25px;
+  padding-right: 25px;
+}
+@media screen and (max-width:767px) {
+  .c-1 .card-title{
+  padding-left: 25px;
+  padding-right: 25px;
+  font-size: 30px;
+}
+}
+@media screen  and (max-width:1500px){
+  .app-cont2{
+    font-size: 40px;
+  }
+}
+@media screen  and (max-width:991px){
+  .app-cont2{
+    font-size: 56px;
+    font-weight: 700;
+    color: rgb(24, 83, 161);
+    margin: -25px 0px 0px 0px;
+  }
+}
+@media screen  and (max-width:767px){
+  .app-cont2{
+    font-size: 40px;
+    font-weight: 700;
+    color: rgb(24, 83, 161);
+    margin: -25px 0px 0px 0px;
+  }
+}
+@media screen and (max-width:991px) {
+  select.form-select.mb-4 {
+    font-size: 14px;
+}
+input#exampleInputdate {
+  font-size: 14px;
+}
+}
+@media screen and (max-width:767px) {
+  select.form-select.mb-4 {
+    font-size: 14px;
+}
+input#exampleInputdate {
+  font-size: 14px;
+}
+}
+.c-1 .card-text{
+  padding-left: 25px;
+  padding-right: 10px;
+}
+.c-1 button{
+ margin: -55px 0px -20px -120px;
+}
+.cta {
+  border: none;
+  background: none;
+}
+.cta span {
+  padding-bottom: 7px;
+  letter-spacing: 4px;
+  font-size: 14px;
+  padding-right: 15px;
+  text-transform: uppercase;
+}
+.cta svg {
+  transform: translateX(-8px);
+  transition: all 0.3s ease;
+}
+
+.cta:hover svg {
+  transform: translateX(0);
+}
+
+.cta:active svg {
+  transform: scale(0.9);
+}
+.hover-underline-animation {
+  position: relative;
+  color: black;
+  padding-bottom: 20px;
+}
+.hover-underline-animation:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #000000;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+.cta:hover .hover-underline-animation:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* Custom styles for the card */
+.custom-card {
+  background-color: #b868a0;
+  color: white;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+  width:280px;
+
+}
+
+.custom-card:hover {
+  transform: scale(1.05); /* Make it slightly bigger on hover */
+}
+
+.card-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4; /* Display only 4 lines */
+  -webkit-box-orient: vertical;
+}
+
+.custom-modal-lg {
+    max-width: 75%; /* Adjust the width as needed */
+}
+
+</style>
+
+
+
+<body style="background-image:url({% static 'images/DSC04197.png' %}); background-size: 100%; background-repeat: no-repeat;">
+
+
+    
+    
+
+<div class="container-fluid">
+    <div class="row n1">
+      <div class="col-lg">
+        <div class="row num-cont">
+          <p>What We Would Do</p>
+          </div>
+          <div class="row num-cont2">
+          <p>To See You Smile</p>
+        </div>
+        
+        <div class="row num-cont3">
+        </div> 
+    </div>
+  </div><hr> 
+  <!-- Section 2 -->
+  
+    <div class="row sec3 p-5">
+      <div class="col-lg">
+        <div class="row">
+          <div class="col-lg">
+            <h3>About Us</h3>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg">
+            <p>Nechupadam dental clinic was initially established as a diminutive family-owned dental practice, where Dr. K. T. Paulose, accompanied by his progenies, Dr. Thomas K. Paulose and Dr. Varghese K. Paulose, strived to offer top-notch dental care. Dr. K. T. Paulose, the founder and chairman, possesses a wealth of experience as a distinguished orthodontist and oral prosthetic esthetic specialist, with his offspring, alongside their respective spouses, being accomplished dental practitioners.</p>
+          </div>
+          <div class="col-lg">
+            <p>Over time, the clinic has evolved into a sophisticated, globally accredited dental facility that caters to the needs of patients in Kolenchery and Cochin city. Dr. Thomas K. Paulose Nechupadam, the eldest son, holds the position of CEO, while also exhibiting immense proficiency in the fields of appearance, orthodontics, dentofacial orthopedics, and implantology. Similarly, his younger brother, Dr. Varghese K. Paulose, is an accomplished orthodontist and implant specialist, renowned for his articulate oration in the realm of esthetic dentistry. The upcoming generation of dental surgeons is primed to guide the clinics towards unprecedented triumph.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </div>
+  </div>
+  <!-- Section 3 -->
+  <h1 style="color:#1853a1; margin-left:70px; font-weight:700;">Our Treatments</h1>
+  <br>
+  <div class="container">
+    <div class="row" style="margin-left:44px;">
+      <!-- Card 1 -->
+      {% for i in treatments %}
+      <div class="col-md-3 mb-4" style="margin-right:85px;">
+        <a href="#" style="text-decoration: none; color: white;">
+          <div class="card custom-card">
+            <img src="{{ i.imageURL }}" class="card-img-top" alt="{{ i.title }}" height="280px">
+            <div class="card-body">
+              <h5 class="card-title">{{ i.title }}</h5>
+              <p class="card-text">{{ i.description }}</p>
+              <br>
+  
+              <a href="{% url 'more_about_treatment' i.pk %}" class="btn btn-primary">
+                Read More
+              </a>
+  
+            </div>
+          </div>
+        </a>
+      </div>
+  
+      {% endfor %}
+  
+    </div>
+  
+  </div>
+  
+  <!--  -->
+  
+  <div class="container-fluid px-4 my-5">
+    <div class="row">
+      <div class="col-lg col-md col-sm">
+        <h3>Our Mission</h3>
+        <p>Our paramount objective is to render dental care of unparalleled quality, adhering to global standards. We strive to promote healthy oral hygiene and preserve natural structures through minimally invasive techniques, all while utilizing state-of-the-art equipment.</p>
+      </div>
+      <div class="col-lg col-md col-sm">
+        <h3>Our Vision</h3>
+        <p>The founding chairman of our organization, Dr. K. T. Paulose, has always envisioned being at the forefront of delivering exceptional dental services to all individuals, regardless of their social standing. His fervent desire was to provide world-class dental treatment that was economically accessible to the masses. In 1990, his aspiration of providing complimentary dental services to the underprivileged in his hometown materialized, thereby bringing his cherished dream to fruition.</p>
+      </div>
+    </div>
+  </div>
+  
+  
+  <div class="container">
+    <div class="row n1">
+      <div class="col-lg">
+        <div class="row num-cont">
+          <p>Our Dental Service</p>
+          </div>
+          <div class="row num-cont2">
+          <p>In Numbers</p>
+        </div>
+  
+        <div class="row num-cont3">
+          <img src="{% static 'images/oooo.png' %}" width="100%" alt="">
+        </div>
+  <hr>  
+        <div class="row" style="margin: 50px 0px 50px 0px;">
+          <button class="cta">
+            <span class="hover-underline-animation"><a href="{% url 'nechupadam_history' %}" style="text-decoration:none; color:black;"> HISTORY</a> </span>
+            <svg viewBox="0 0 46 16" height="10" width="30" xmlns="http://www.w3.org/2000/svg" id="arrow-horizontal">
+                <path transform="translate(30)" d="M8,0,6.545,1.455l5.506,5.506H-30V9.039H12.052L6.545,14.545,8,16l8-8Z" data-name="Path 10" id="Path_10"></path>
+            </svg>
+        </button>
+        </div>
+  <hr>  
+    </div>
+  </div>
+  </div>
+  
+  <div class="container">
+    <div class="row a1">
+  
+      <div class="col-lg-6">
+        <div class="row app-cont">
+          <p>Book Your Visit At</p>
+          </div>
+          <div class="row app-cont2">
+          <p>Nechupadam Dental Clinic</p>
+          </div>
+          <p class="app-cont3">Have an emergency? Do book with us with this simple form below and superior deliverables whereas web-enabled applications. Continually reintermediate integrated processes through technically sound intellectual capital. <hr></p> 
+  
+            <div class="row sub-1253">
+                <div class="col-lg">
+                  <form action="{% url 'booking' %}" method="POST">
+                    {% csrf_token %} 
+                    <div class="mb-4">
+                      <label for="exampleInputname" class="form-label">Your Name</label>
+                      <input type="text" class="form-control" id="exampleInputname" name="name" required>
+                    </div>
+                    <div class="mb-4">
+                      <label for="exampleInputPhone" class="form-label">Phone number</label>
+                      <input type="text" class="form-control" id="exampleInputphone" name="phone" pattern="[0-9]{10}" title="Please enter exactly 10 digits" required>
+                    </div>
+                    <select class="form-select mb-4" aria-label="Default select example" name="doctor">
+                      <option selected disabled>Select Your Dentist</option>
+                      <option value="Dr.Thomas Nechupadam">Dr.Thomas Nechupadam</option>
+                      <option value="Dr.Nithia Sara Thomas">Dr.Nithia Sara Thomas</option>
+                      <option value="Dr.Sreelakshmi Surrej">Dr.Sreelakshmi Surrej</option>
+                    </select>
+                    <div class="mb-4">
+                        <input type="date" placeholder="Appointment date *" class="form-control" id="exampleInputdate" min="{{ today }}" name="date" required>
+                    </div>
+                    <button type="submit" class="btn">Book Your Dentist</button>
+                  </form>
+                </div>
+            </div>
+      </div>
+
+      <script>
+        // Get the current date in the format "YYYY-MM-DD"
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('exampleInputdate').setAttribute('min', today);
+      </script>
+
+
+      <div class="col-lg-6">
+        <img style="mix-blend-mode:darken;" src="{% static 'images/DSC04293-madam.png' %}" width="90%" alt="">
+    </div>
+    </div>
+   
+
+          </div>
+          </div> 
+          </div>
+      
+      </div>
+    </div>
+  
+  </div>
+
+
+
+
+
+{% endblock %}

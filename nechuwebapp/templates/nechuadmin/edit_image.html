@@ -1,0 +1,51 @@
+{% extends 'nechuadmin/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+    <h2 style="text-align: center;" class="pt-5 pb-5">Edit Image</h2>
+</div>
+
+<form action="{% url 'edit_image' get_image.pk %}" method="POST" enctype="multipart/form-data" style="width: 500px; margin: auto;">
+    {% csrf_token %}
+    <div class="form-group">
+        <input type="text" class="form-control" name="title" value="{{ get_image.title }}" placeholder="Title">
+    </div>
+    <br>
+    <div class="form-group">
+        Choose new image
+        <input type="file" class="form-control" id="treatmentImage" name="image">
+    </div>
+    <br>
+    <div class="form-group">
+        <textarea class="form-control" id="treatmentDescription" rows="4" name="description">{{ get_image.description }}</textarea>
+    </div>
+    <br>
+    Current Category: {{ get_image.category }}
+
+    <br>
+    <br>
+
+    <div class="form-group">
+        <label for="treatmentDropdown" class="form-label">Select new category</label>
+        <select class="form-select" id="treatmentDropdown" name="category">
+          <option value="Treatment Photos">Treatment Photos</option>
+          <option value="Event Photos">Event Photos</option>
+          <option value="Clinic Photos">Clinic Photos</option>
+          <option value="Doctor Photos">Doctor Photos</option>
+          <option value="Other Photos">Other Photos</option>
+
+          <!-- Add more options as needed -->
+        </select>
+    <div>
+
+    <br>
+    <div class="form-group text-center">
+        <button type="submit" class="btn btn-primary" style="width: 200px;"><i class="fa fa-plus"></i> Update</button>
+    </div>
+</form>
+
+
+
+{% endblock %}

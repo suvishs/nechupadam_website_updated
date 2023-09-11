@@ -1,0 +1,50 @@
+{% extends 'general/main.html' %}
+
+
+{% block content %}
+
+<style>
+    /* Custom hover effect */
+    .card {
+        transform: scale(1.05);
+        transition: transform 0.2s;
+        z-index: 1;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .card:hover {
+        transform: scale(1.0);
+        transition: transform 0.2s;
+        z-index: 1;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+</style>
+
+<h1 style="color:#1853a1; margin-left:70px; font-weight:700;">Nechupadam Images</h1>
+<br>
+
+<div class="container">
+    <div class="row">
+        {% for i in images %}
+        <div class="col-md-3 col-sm-6 mb-4">
+            <div class="card">
+                <img src="{{i.imageURL}}" class="card-img-top" alt="{{i.title}}" height="230px">
+                <div class="card-body">
+                    <h5 class="card-title" style="color:purple; text-align:center;">{{i.title}}</h5>
+                </div></a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

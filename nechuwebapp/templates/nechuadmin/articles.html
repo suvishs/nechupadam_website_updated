@@ -1,0 +1,94 @@
+{% extends 'nechuadmin/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<h1 class="card-title fw-semibold mb-4" style="font-size:25px;">Manage Articles</h1>
+<br>
+<br>
+<h5 class="card-title fw-semibold mb-4">Add Articles</h5>
+
+  <div class="custom-card" style="box-shadow: 2px 2px 15px rgba(188, 116, 165, 0.5); padding: 20px;">
+    <form action="{% url 'add_article' %}" enctype="multipart/form-data" method="POST">
+      {% csrf_token %}
+      <div class="mb-3">
+        <label for="treatmentTitle" class="form-label">Article title</label>
+        <input type="text" class="form-control" id="treatmentTitle" aria-describedby="titleHelp" name="title">
+      </div>
+      <div class="mb-3">
+        <label for="treatmentImage" class="form-label">Article image</label>
+        <input type="file" class="form-control" id="treatmentImage" name="image">
+      </div>
+      <div class="mb-3">
+        <label for="treatmentDescription" class="form-label">Article content</label>
+        <textarea class="form-control" id="treatmentDescription" rows="4" name="content"></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="treatmentTitl" class="form-label">Author</label>
+        <input type="text" class="form-control" id="treatmentTitl" aria-describedby="titleHelp" name="author">
+      </div>
+      <button type="submit" class="btn" style="background-color:#bc74a5; color:white;">Submit</button>
+    </form>
+  </div>
+
+<br>
+<br>
+<br>
+<br>
+
+<h5 class="card-title fw-semibold mb-4">View Articles</h5>
+<br>
+<style>
+
+    .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 10px;
+        margin: 0 35px; /* Adjust margin to create spacing between cards */
+      }
+  
+      .custom-cardtwo {
+        box-shadow: 0 4px 6px rgba(188, 116, 165, 0.5);
+        width: calc(42% - 7px); /* To create two cards in a row with spacing */
+        padding: 20px;
+        cursor: pointer;
+        transition: transform 0.2s;
+        margin-bottom:50px;
+      }
+  
+      .custom-cardtwo:hover {
+        transform: scale(1.05);
+      }
+
+      @media (max-width: 767px) {
+        .custom-cardtwo {
+          width: 100%; /* Adjust width for full width on mobile */
+        }
+      }
+
+</style>
+
+
+<div class="card-container">
+
+  {% for i in articles %}
+    <div class="custom-cardtwo" onclick="window.location.href='{% url 'singlearticle' i.pk %}'">
+      <img src="{{i.imageURL}}" alt="Treatment Image" style="width: 100%;">
+      <div class="card-body">
+        <h5 class="card-title">{{i.title}}</h5>
+        <p class="card-text" style="overflow: hidden; max-height: 6.0em;">{{i.description}}</p>
+
+        <a href="{% url 'edit_article' i.pk %}"><button class="btn btn-square" style="background-color:#bc74a5; color:white;">
+          <i class="ti ti-pencil fs-5"></i>
+        </button></a>
+        <a href="{% url 'delete_article' i.pk %}"><button class="btn btn-square" style="background-color:red; color:white;">
+          <i class="ti ti-trash fs-5"></i>
+        </button> 
+      </div></a>
+    </div>
+  {% endfor %}
+
+</div>
+
+{% endblock %}

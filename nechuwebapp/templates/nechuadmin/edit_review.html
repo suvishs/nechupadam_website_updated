@@ -1,0 +1,32 @@
+{% extends 'nechuadmin/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+    <h2 style="text-align: center;" class="pt-5 pb-5">Edit Review</h2>
+</div>
+
+<form action="{% url 'edit_review' get_treatment.pk %}" method="POST" enctype="multipart/form-data" style="width: 500px; margin: auto;">
+    {% csrf_token %}
+    <div class="form-group">
+        <input type="text" class="form-control" name="name" value="{{ get_treatment.name }}" placeholder="Title">
+    </div>
+    <br>
+    <div class="form-group">
+        Choose new image
+        <input type="file" class="form-control" id="treatmentImage" name="image">
+    </div>
+    <br>
+    <div class="form-group">
+        <textarea class="form-control" id="treatmentDescription" rows="4" name="review">{{ get_treatment.review }}</textarea>
+    </div>
+    <br>
+    <div class="form-group text-center">
+        <button type="submit" class="btn btn-primary" style="width: 200px;"><i class="fa fa-plus"></i> Update</button>
+    </div>
+</form>
+
+
+
+{% endblock %}

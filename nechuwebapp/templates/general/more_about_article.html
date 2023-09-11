@@ -1,0 +1,25 @@
+{% extends 'general/main.html' %}
+
+
+{% block content %}
+
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+            <h1 style="color:#1853a1;">{{ get_article.title }}</h1>
+            <img src="{{ get_article.image.url }}" alt="Image" class="img-fluid mt-3">
+            <br>
+            <br>
+            <p class="mt-3 pl-2">{{ get_article.content | linebreaks }}</p>
+            <br>
+            <br>
+            <br>
+            <h6 style="text-align:right; font-weight:400;">Article By, {{get_article.author}}</h6>
+            <h6 style="text-align:right; font-weight:400;">Uploaded On, {{get_article.uploaded_date}}</h6>
+            <h6 style="text-align:right; font-weight:400;">Last Edited On, {{get_article.edited_date}}</h6>        </div>
+    </div>
+</div>
+
+
+{% endblock %}

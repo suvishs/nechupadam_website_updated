@@ -1,0 +1,115 @@
+{% extends 'nechuadmin/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<h1 class="card-title fw-semibold mb-4" style="font-size:25px;">Manage YouTube Videos</h1>
+<br>
+<br>
+<h5 class="card-title fw-semibold mb-4">Add YouTube Category</h5>
+
+<div class="custom-card" style="box-shadow: 2px 2px 15px rgba(188, 116, 165, 0.5); padding: 20px;">
+    <form action="{% url 'add_youtube_category' %}" method="POST">
+      {% csrf_token %}
+      <div class="mb-3">
+        <label for="treatmentTitle" class="form-label">Add new category</label>
+        <input type="text" class="form-control" id="treatmentTitle" aria-describedby="titleHelp" name="category">
+      </div>
+      <button type="submit" class="btn" style="background-color:#bc74a5; color:white;">Submit</button>
+    </form>
+  </div>
+
+<br>
+<br>
+<br>
+<br>
+<h5 class="card-title fw-semibold mb-4">Add YouTube Video</h5>
+
+<div class="custom-card" style="box-shadow: 2px 2px 15px rgba(188, 116, 165, 0.5); padding: 20px;">
+    <form action="{% url 'add_youtube' %}" method="POST">
+      {% csrf_token %}
+      <div class="mb-3">
+        <label for="treatmentTitle" class="form-label">Video Title</label>
+        <input type="text" class="form-control" id="treatmentTitle" aria-describedby="titleHelp" name="title">
+      </div>
+
+      <div class="mb-3">
+        <label for="youtubeLink" class="form-label">YouTube link</label>
+        <input type="url" class="form-control" id="youtubeLink" name="youtube">
+      </div>
+
+      <div class="mb-3">
+        <label for="treatmentDropdown" class="form-label">Select a category</label>
+        <select class="form-select" id="treatmentDropdown" name="category">
+            {% for i in categories %}
+                <option value="{{i.category}}">{{i.category}}</option>
+            {% endfor %}
+          <!-- Add more options as needed -->
+        </select>
+      </div>
+
+      <button type="submit" class="btn" style="background-color:#bc74a5; color:white;">Submit</button>
+    </form>
+  </div>
+
+<br>
+<br>
+<br>
+<br>
+
+
+<h5 class="card-title fw-semibold mb-4">View YouTube Videos</h5>
+<br>
+<style>
+
+    .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 10px;
+        margin: 0 35px; /* Adjust margin to create spacing between cards */
+      }
+  
+      .custom-cardtwo {
+        box-shadow: 0 4px 6px rgba(188, 116, 165, 0.5);
+        width: calc(42% - 7px); /* To create two cards in a row with spacing */
+        padding: 20px;
+        cursor: pointer;
+        transition: transform 0.2s;
+        margin-bottom:50px;
+      }
+  
+      .custom-cardtwo:hover {
+        transform: scale(1.05);
+      }
+
+      @media (max-width: 767px) {
+        .custom-cardtwo {
+          width: 100%; /* Adjust width for full width on mobile */
+        }
+      }
+
+</style>
+
+
+<div class="card-container">
+
+  {% for i in youtube %}
+    <div class="custom-cardtwo" onclick="window.location.href=''">
+        <iframe class="embed-responsive-item" src="{{i.youtube_link}}" width="100%" height="240px" allowfullscreen></iframe>
+        <div class="card-body">
+        <h5 class="card-title">{{i.title}}</h5>
+        <a href=""><button class="btn btn-square" style="background-color:#bc74a5; color:white;">
+          <i class="ti ti-pencil fs-5"></i>
+        </button></a>
+        <a href=""><button class="btn btn-square" style="background-color:red; color:white;">
+          <i class="ti ti-trash fs-5"></i>
+        </button>
+      </div></a>
+    </div>
+  {% endfor %}
+
+</div>
+
+
+{% endblock %}
