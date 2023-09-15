@@ -4,31 +4,40 @@
 {% block content %}
 
 <style>
-    .card{
-      padding: 15px;
-      border: 1.9px solid #b868a0;
-      border-radius: 20px;
-      margin: 65px 35px 55px 35px;
-      position: relative;
-      display: inline-block;
-  
-    }
-    .card .badge {
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  .card {
+    padding: 15px;
+    border: 1.9px solid #b868a0;
+    border-radius: 20px;
+    margin: 65px 35px 55px 35px;
+    position: relative;
+    display: inline-block;
+
+  }
+
+  .card .badge {
     position: absolute;
     top: -14px;
     left: 20px;
     padding: 7px 15px;
     border-radius: 5px;
-    background-color:#1853a1;
+    background-color: #1853a1;
     color: white;
-    }
-    .pad{
-      margin-top: 10%;
-    }
-    .side{
-      border-right: 2px solid rgba(0, 0, 0, 0.297);
-    }
-    .right::after {
+  }
+
+  .pad {
+    margin-top: 10%;
+  }
+
+  .side {
+    border-right: 2px solid rgba(0, 0, 0, 0.297);
+  }
+
+  .right::after {
     content: '';
     position: absolute;
     width: 65px;
@@ -39,8 +48,9 @@
     top: 15px;
     border-radius: 50%;
     z-index: 1;
-    }
-    .right::before {
+  }
+
+  .right::before {
     content: " ";
     height: 0;
     position: absolute;
@@ -51,10 +61,10 @@
     border: medium solid #1853a1;
     border-width: 10px 0 10px 10px;
     border-color: transparent transparent transparent #1853a1;
-    }
+  }
 
-    /* Add arrows to the right container (pointing left) */
-    .left::before {
+  /* Add arrows to the right container (pointing left) */
+  .left::before {
     content: " ";
     height: 0;
     position: absolute;
@@ -65,10 +75,11 @@
     border: medium solid #1853a1;
     border-width: 10px 10px 10px 0;
     border-color: transparent #1853a1 transparent transparent;
-    }
-    .left::after {
-    content: url('') ;
-    
+  }
+
+  .left::after {
+    content: url('');
+
     position: absolute;
     width: 65px;
     height: 65px;
@@ -78,198 +89,209 @@
     top: 15px;
     border-radius: 50%;
     z-index: 2;
-    }
-    .committed-cont{
+  }
+
+  .committed-cont {
     margin: 0px 0px 0px 0px;
-    }
-    .committed-cont p{
+  }
+
+  .committed-cont p {
     padding-top: 30px;
     padding-left: 23px;
     font-size: 25px;
     color: #b868a0;
 
-    }
+  }
 
 
-    .note p{
+  .note p {
     background-color: #b868a0;
     padding-top: 5px;
     padding-bottom: 5px;
     border-radius: 20px;
     margin-bottom: 0px;
     color: white;
-    }
+  }
+
+  .hrrowright {
+    border-right: 1px solid black;
+  }
+  
 </style>
 
 
-
-<div class="container pt-2">
+  {% comment %} <div class="container pt-2">
     <div class="row committed-cont">
-      <p>How Nechupadam Dental Clinic</p>
+      <p style="text-align:center;">How Nechupadam Dental Clinic</p>
     </div>
     <div class="row committed-cont2">
       <div class="col-lg">
-        <p style="font-size:45px;">Was Founded</p>
+        <p style="font-size:45px;text-align:center;">Was Founded</p>
       </div>
-   </div>
-<div class="container mt-5">
-<div class="row">
-  <center><div class="col-lg-1 note"><p>1965-1991</p></div></center>
-  <div class="col-lg side">
+    </div>
+    <div class="container mt-5">
+      <div class="row">
+        <center>
+          <div class="col-lg-2 note">
+            <p>1965-1991</p>
+          </div>
+        </center>
+        <div class="col-lg">
+          <div class="container">
+            {% for i in history_objects_bellow %}
+              {% if not forloop.counter|divisibleby:2 %}
+                <div class="row">
+                  <div class="col-6 hrrowright">
+                    <div class="card right">
+                      <span class="badge">{{i.year}}</span>
+                      <div class="container">
+                        <h4>{{i.description}}</h4>
+                        <img src="{{i.image.url}}" alt="Avatar" style="width:100%">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-6"></div>
+                {% else %}
+                <div class="col-6 hrrowright"></div>
+                <div class="col-6">
+                  <div class="card left">
+                    <span class="badge">{{i.year}}</span>
+                    <div class="container">
+                      <h4>{{i.description}}</h4>
+                      <img src="{{i.image.url}}" alt="Avatar" style="width:100%">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
 
-    <div class="card right">  
-      <span class="badge">1965</span>
-      <div class="container">
-        <h4>Nechupadam Dental Clinic was established on August 17th by Dr K T Paulose, who was a Gold Medal Student of Govt Dental College Trivandrum for all 4 years of Dental Education.</h4>
-        <img src="{% static 'images/timeline-3-1-768x248.jpg' %}" alt="Avatar" style="width:100%">
-      </div>
+
+
+        <div class="row">
+          <center>
+            <div class="col-lg-2 note">
+              <p>2000-2015</p>
+            </div>
+          </center>
+          <div class="col-lg">
+            <div class="container">
+              {% for i in history_objects_above %}
+                {% if not forloop.counter|divisibleby:2 %}
+                  <div class="row">
+                    <div class="col-6 hrrowright">
+                      <div class="card right">
+                        <span class="badge">{{i.year}}</span>
+                        <div class="container">
+                          <h4>{{i.description}}</h4>
+                          <img src="{{i.image.url}}" alt="Avatar" style="width:100%">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-6"></div>
+                  {% else %}
+                  <div class="col-6 hrrowright"></div>
+                  <div class="col-6 hrrowleft">
+                    <div class="card left">
+                      <span class="badge">{{i.year}}</span>
+                      <div class="container">
+                        <h4>{{i.description}}</h4>
+                        <img src="{{i.image.url}}" alt="Avatar" style="width:100%">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+      </div> {% endcomment %}
+
+
+      <div class="container pt-2">
+        <div class="row committed-cont">
+            <p style="text-align:center;">
+              Dr. Thomas Nechupadam</p>
+        </div>
+        <div class="row committed-cont2">
+            <div class="col-lg">
+                <p style="font-size:45px;text-align:center;">Dental Care Process Explained</p>
+            </div>
+        </div>
+        <div class="container mt-5">
+            <div class="row">
+              {% comment %} <center><div class="col-lg-2 note text-center">
+                  <p>1965-1991</p>
+                </div></center> {% endcomment %}
+                <div class="col-lg">
+                    <div class="container">
+                        {% for i in history_objects_bellow %}
+                        {% if not forloop.counter|divisibleby:2 %}
+                        <div class="row">
+                            <div class="col-md-6 hrrowright">
+                                <div class="card right">
+                                    <span class="badge">{{i.year}}</span>
+                                    <div class="container">
+                                        <h4>{{i.description}}</h4>
+                                        <img src="{{i.image.url}}" alt="Avatar" style="width:100%">
+                                    </div>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="col-md-6 hrrowleft">
+                                <div class="card left">
+                                    <span class="badge">{{i.year}}</span>
+                                    <div class="container">
+                                        <h4>{{i.description}}</h4>
+                                        <img src="{{i.image.url}}" alt="Avatar" style="width:100%">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+    
+            <div class="row">
+              <center><div class="col-lg-2 note text-center">
+                    <p>2000-2015</p>
+                </div></center>
+                <div class="col-lg">
+                    <div class="container">
+                        {% for i in history_objects_above %}
+                        {% if not forloop.counter|divisibleby:2 %}
+                        <div class="row">
+                            <div class="col-md-6 hrrowright">
+                                <div class="card right">
+                                    <span class="badge">{{i.year}}</span>
+                                    <div class="container">
+                                        <h4>{{i.description}}</h4>
+                                        <img src="{{i.image.url}}" alt="Avatar" style="width:100%">
+                                    </div>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="col-md-6 hrrowleft">
+                                <div class="card left">
+                                    <span class="badge">{{i.year}}</span>
+                                    <div class="container">
+                                        <h4>{{i.description}}</h4>
+                                        <img src="{{i.image.url}}" alt="Avatar" style="width:100%">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     
-    <div class="card right">  
-      <span class="badge">1971</span>
-
-      <div class="container">
-        <h4>Nechupadam Dental Clinic was started at Perumbavoor after Dr Paulose took over the practice of veteran Dentist Dr Balan. The clinic was later sold to JJ dental clinic group in 1976.</h4>
-        <img src="{% static 'images/timeline-3-1-768x248.jpg' %}" alt="Avatar" style="width:100%">
-      </div>
-    </div>
-
-    <div class="card right"> 
-      <span class="badge">1981</span>
-
-      <div class="container">
-        <h4>Nechupadam Dental Clinic equipped with X-rays and specialists including Crown and Bridge and oral rehabilitation team.</h4>
-        <img src="{% static 'images/xray.jpg' %}" alt="Avatar" style="width:100%">
-      </div>
-    </div>
-
-    <div class="card right">  
-      <span class="badge">1990</span>
-      <div class="container">
-        <h4>Free Dental clinic on Friday afternoon was inaugurated by Dr K R Rajan IAS District Collector Ernakulam as part of Silver Jubilee Celebrations to serve the needy.</h4>
-        <img src="{% static 'images/timeline-5-768x248.jpg' %}" alt="Avatar" style="width:100%">
-      </div>
-    </div>
-
-
-  </div>
-  <div class="col-lg pad">
-    
-    <div class="card left">  
-      <span class="badge">1969</span>
-      <div class="container">
-        <h4>Dental Wing was established at MOSC Medical Mission Hospital Kolenchery with Dr K T Paulose Nechupadam as the chief Dental Surgeon.</h4>
-        <img src="{% static 'images/timeline-3-1-768x248.jpg' %}" alt="Avatar" style="width:100%">
-      </div>
-    </div>
-
-    <div class="card left">  
-      <span class="badge">1976</span>
-      <div class="container">
-        <h4>Nechupadam Dental Clinic became the first full-fledged private Orthodontic practice in Kerala, equipped with a team of dentists and lab technicians, and an in-house lab for dental prosthesis and orthodontic appliances under the leadership of Orthodontist Dr Paulose K T, who secured Masters in Orthodontics from Govt Dental College Trivandrum.</h4>
-        <img src="{% static 'images/timeline-3-1-768x248.jpg' %}" alt="Avatar" style="width:100%">
-      </div>
-    </div>
-
-    <div class="card left">  
-      <span class="badge">1985</span>
-      <div class="container">
-        <h4>The clinic became fully air-conditioned and implemented sterilization and disinfection protocols.</h4>
-        <img src="{% static 'images/timeline-4-768x248.jpg' %}" alt="Avatar" style="width:100%">
-      </div>
-    </div>
-
-    <div class="card left">  
-      <span class="badge">1991</span>
-      <div class="container">
-        <h4>Dr Nechupadam Dental Clinic @ Marine Drive GCDA Complex was fully equipped with all modern equipment, including dental X-rays and a minor prosthetic and orthodontic lab.</h4>
-        <img src="{% static 'images/timeline-5-768x248.jpg' %}" alt="Avatar" style="width:100%">
-      </div>
-    </div>
-
-  </div>
-</div>
-</div>
-<div class="container mt-0">
-<div class="row">
-  <center><div class="col-lg-1 note"><p>2000-2015</p></div></center>
-  <div class="col-lg side">
-
-    <div class="card right">  
-      <span class="badge">2000</span>
-      <div class="container">
-        <h4>Dr Thomas Nechupadam joined Dr Nechupadam Dental Clinic and revamped it with digital X-rays and single visit rotary endodontic treatment.</h4>
-        <img src="{% static 'images/timeline-11-768x248.jpg' %}" alt="Avatar" style="width:100%">
-      </div>
-    </div>
-    
-    <div class="card right">  
-      <span class="badge">2002</span>
-
-      <div class="container">
-        <h4>Dr. Sajil John, a Periodontist, joins the oral restorative team, strengthening the clinic’s capabilities.</h4>
-        <img src="{% static 'images/timeline-7-1-768x248.jpg' %}" alt="Avatar" style="width:100%">
-      </div>
-    </div>
-
-    <div class="card right"> 
-      <span class="badge">2008</span>
-
-      <div class="container">
-        <h4>Dr. Nithia Sara Thomas joins the Nechupadam Dental team.</h4>
-        <img src="{% static 'images/timeline-8-768x248.jpg' %}" alt="Avatar" style="width:100%">
-      </div>
-    </div>
-
-    <div class="card right">  
-      <span class="badge">2014</span>
-      <div class="container">
-        <h4>Nechupadam Dental is recognized as an international pageant groomer for International Fashion Fest and national pageants.</h4>
-        <img src="{% static 'images/timeline-101-768x248.jpg' %}" alt="Avatar" style="width:100%">
-      </div>
-    </div>
-
-
-  </div>
-  <div class="col-lg pad">
-    
-    <div class="card left">  
-      <span class="badge">2001</span>
-      <div class="container">
-        <h4>Nechupadam Dental Implantology and implant prosthetic clinic is established.</h4>
-        <img src="{% static 'images/timeline-4-768x248.jpg' %}" alt="Avatar" style="width:100%">
-      </div>
-    </div>
-
-
-    
-    <div class="card left">  
-      <span class="badge">2005</span>
-      <div class="container">
-        <h4>Nechupadam Dental becomes the first internationally certified dental clinic in Kerala, with a focus on dental tourism as a key area. The clinic also launches the Nechupadam Dental Portal and live TV shows with Malayalam TV channels.</h4>
-        <img src="{% static 'images/DSC_3135-2048x1365oooo.jpg' %}" alt="Avatar" style="width:100%">
-      </div>
-    </div>
-
-    <div class="card left">  
-      <span class="badge">2010</span>
-      <div class="container">
-        <h4>Nechupadam Dental starts Youtube channels for dental education and patient awareness, including “God’s Own Dentist“ and “Keraladentaltours.“</h4>
-        <img src="{% static 'images/timeline-2-768x248.jpg' %}" alt="Avatar" style="width:100%">
-      </div>
-    </div>
-
-    <div class="card left">  
-      <span class="badge">2015</span>
-      <div class="container">
-        <h4>The clinic celebrates 50 years of dental excellence and is awarded as the best Dental Tourism Provider in India.</h4>
-        <img src="{% static 'images/timeline-101-768x248.jpg' %}" alt="Avatar" style="width:100%">
-      </div>
-    </div>
-
-  </div>
-</div>
-</div>
-
-
-{% endblock %}
+  
+  {% endblock %}

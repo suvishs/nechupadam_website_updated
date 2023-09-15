@@ -14,6 +14,10 @@ urlpatterns = [
     path('singlearticle/<int:pk>/', views.singlearticle, name='singlearticle'),
     path('staffs', views.staffs, name='staffs'),
     path('bg', views.bg, name='bg'),
+    path('history', views.history, name='history'),
+    path('process', views.process, name='process'),
+    path('edit_history/<int:id>', views.edit_history, name='edit_history'),
+    path('edit_process/<int:id>', views.edit_process, name='edit_process'),
 
 
     path('medicalreports', views.medicalreports, name='medicalreports'),

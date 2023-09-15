@@ -14,10 +14,13 @@ def index(request):
     return render(request, 'general/index.html', context)
 
 def nechupadam_history(request):
-    return render(request, 'general/nechupadam_history.html')
+    history_objects_bellow = History.objects.filter(year__lt=2000).order_by("year")
+    history_objects_above = History.objects.filter(year__gte=2000).order_by("year")
+    return render(request, 'general/nechupadam_history.html', {'history_objects_bellow':history_objects_bellow, "history_objects_above":history_objects_above})
 
 def nechupadam_process(request):
-    return render(request, 'general/nechupadam_process.html')
+    nechupadam_proces = DentalSurgeryStep.objects.all()
+    return render(request, 'general/nechupadam_process.html', {"nechupadam_proces":nechupadam_proces})
 
 def team(request):
     staffs = Staff.objects.all()
@@ -253,6 +256,37 @@ def bg(request):
     bg3 = Background_image3.objects.all()
     context = {'bg':bg, 'bg2':bg2, 'bg3':bg3}
     return render(request, 'nechuadmin/bg.html', context)
+
+def process(request):
+    process = DentalSurgeryStep.objects.all().order_by("step_number")
+    context = {"process":process}
+    return render(request, 'nechuadmin/process.html', context)
+
+def history(request):
+    history = History.objects.all().order_by("year")
+    if request.method == "POST":
+        year = request.POST.get("year")
+        description = request.POST.get("description")
+        image = request.FILES["nechu_image"]
+        newhistory = History(year=year, description=description, image=image)
+        newhistory.save()
+        messages.info(request, "History added successfuly...")
+        return redirect("history")
+    context = {"history":history}
+    return render(request, 'nechuadmin/history.html', context)
+
+def process(request):
+    process = DentalSurgeryStep.objects.all().order_by("step_number")
+    if request.method == "POST":
+        step_number = request.POST.get("step_number")
+        title = request.POST.get("title")
+        image = request.FILES["nechu_image"]
+        newprocess = DentalSurgeryStep(step_number=step_number, title=title, image=image)
+        newprocess.save()
+        messages.info(request, "process added successfuly...")
+        return redirect("process")
+    context = {"process":process}
+    return render(request, 'nechuadmin/process.html', context)
 
 def treatments(request):
     treatments = Treatment.objects.all()
@@ -555,6 +589,46 @@ def edit_bg(request, pk):
             'get_bg': get_bg,
         }
         return render(request, 'nechuadmin/edit_bg.html', context)
+
+def edit_history(request, id):
+    history = History.objects.get(id=id)
+    if request.method == "POST":
+        year = request.POST.get("year")
+        description = request.POST.get("description")
+        new_image = request.FILES.get('nechu_image')
+        if new_image:
+            history.image = new_image
+
+        history.year = year
+        history.description = description
+        history.save()
+        messages.info(request, "Updated Successfuly...")
+        return redirect('history')
+    else:
+        context = {
+            'history': history,
+        }
+        return render(request, 'nechuadmin/edit_history.html', context)
+    
+def edit_process(request, id):
+    process = DentalSurgeryStep.objects.get(id=id)
+    if request.method == "POST":
+        step_number = request.POST.get("step_number")
+        title = request.POST.get("title")
+        new_image = request.FILES.get('nechu_image')
+        if new_image:
+            process.image = new_image
+
+        process.step_number = step_number
+        process.title = title
+        process.save()
+        messages.info(request, "Updated Successfuly...")
+        return redirect('process')
+    else:
+        context = {
+            'process': process,
+        }
+        return render(request, 'nechuadmin/edit_process.html', context)
 
 
 def edit_bg2(request, pk):

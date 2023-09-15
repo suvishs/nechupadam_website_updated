@@ -209,3 +209,22 @@ class Background_image3(models.Model):
         except:
             url = ''
         return  url
+    
+class History(models.Model):
+    year = models.IntegerField(null=True)
+    description = models.TextField(null=True)
+    image = models.ImageField(upload_to='history_images/', null=True)
+
+    def __str__(self):
+        return str(self.year) 
+
+    class Meta:
+        ordering = ['year']
+        
+class DentalSurgeryStep(models.Model):
+    step_number = models.IntegerField(null=True)
+    title = models.CharField(max_length=200, null=True)
+    image = models.ImageField(upload_to='surgery_images/', null=True)
+
+    def __str__(self):
+        return f"Step {self.step_number}: {self.title}"

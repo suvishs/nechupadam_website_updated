@@ -11,5 +11,7 @@ admin.site.register(Review)
 admin.site.register(Medical_report)
 admin.site.register(Booking)
 admin.site.register(Staff)
+admin.site.register(History)
+admin.site.register(DentalSurgeryStep)
 
 
